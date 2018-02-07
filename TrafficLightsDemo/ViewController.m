@@ -13,16 +13,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    UIImageView* imageViewOne = [[UIImageView alloc] initWithFrame:CGRectMake(170, 100, 100, 100)];
-    imageViewOne.backgroundColor = [UIColor redColor];
+    UIImageView *imageViewOne = [self createLightViewWithColor:[UIColor redColor] andCoordX:170 andCoordY:100 andWidth:100 andHeight:100];
     self.imageViewOne = imageViewOne;
     
-    UIImageView* imageViewTwo = [[UIImageView alloc] initWithFrame:CGRectMake(170, 200, 100, 100)];
-    imageViewTwo.backgroundColor = [UIColor yellowColor];
+    UIImageView *imageViewTwo = [self createLightViewWithColor:[UIColor yellowColor] andCoordX:170 andCoordY:200 andWidth:100 andHeight:100];
     self.imageViewTwo = imageViewTwo;
     
-    UIImageView* imageViewThree = [[UIImageView alloc] initWithFrame:CGRectMake(170, 300, 100, 100)];
-    imageViewThree.backgroundColor = [UIColor greenColor];
+    UIImageView *imageViewThree = [self createLightViewWithColor:[UIColor greenColor] andCoordX:170 andCoordY:300 andWidth:100 andHeight:100];
     self.imageViewThree = imageViewThree;
     
     [self.view addSubview:imageViewOne];
@@ -30,17 +27,20 @@
     [self.view addSubview:imageViewThree];
 }
 
+- (UIImageView *)createLightViewWithColor:(UIColor *)color andCoordX:(CGFloat)coordX andCoordY:(CGFloat)coordY andWidth:(CGFloat)width andHeight:(CGFloat)height  {
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(coordX, coordY, width, height)];
+    imageView.backgroundColor = color;
+
+    return imageView;
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self moveView:self.imageViewTwo];
+    [self blinkView:self.imageViewTwo withDuration:0.5f];
 }
 
-- (void) moveView:(UIView*) view {
-    CGRect rect = self.view.bounds;
-    rect = CGRectInset(rect, CGRectGetWidth(view.frame), CGRectGetHeight(view.frame));
-    double duration = 0.5f;
-    
+- (void) blinkView:(UIView *)view withDuration:(double)duration {
     [UIView animateWithDuration:duration
                           delay:0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse
@@ -48,7 +48,7 @@
                          view.backgroundColor = [UIColor clearColor];
                      }
                      completion:^(BOOL finished) {
-                         NSLog(@"animation finished! %d", finished);
+                         NSLog(@"animation finished with result %d", finished);
                      }];
     
 }
