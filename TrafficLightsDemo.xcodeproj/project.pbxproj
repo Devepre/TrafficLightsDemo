@@ -1,0 +1,551 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CEFCAADF202AE9A500966EB5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFCAADE202AE9A500966EB5 /* AppDelegate.m */; };
+		CEFCAAE2202AE9A500966EB5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFCAAE1202AE9A500966EB5 /* ViewController.m */; };
+		CEFCAAE5202AE9A500966EB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEFCAAE3202AE9A500966EB5 /* Main.storyboard */; };
+		CEFCAAE7202AE9A500966EB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEFCAAE6202AE9A500966EB5 /* Assets.xcassets */; };
+		CEFCAAEA202AE9A500966EB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEFCAAE8202AE9A500966EB5 /* LaunchScreen.storyboard */; };
+		CEFCAAED202AE9A500966EB5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFCAAEC202AE9A500966EB5 /* main.m */; };
+		CEFCAAF7202AE9A500966EB5 /* TrafficLightsDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFCAAF6202AE9A500966EB5 /* TrafficLightsDemoTests.m */; };
+		CEFCAB02202AE9A500966EB5 /* TrafficLightsDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFCAB01202AE9A500966EB5 /* TrafficLightsDemoUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CEFCAAF3202AE9A500966EB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CEFCAAD2202AE9A500966EB5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CEFCAAD9202AE9A500966EB5;
+			remoteInfo = TrafficLightsDemo;
+		};
+		CEFCAAFE202AE9A500966EB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CEFCAAD2202AE9A500966EB5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CEFCAAD9202AE9A500966EB5;
+			remoteInfo = TrafficLightsDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CEFCAADA202AE9A500966EB5 /* TrafficLightsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrafficLightsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEFCAADD202AE9A500966EB5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CEFCAADE202AE9A500966EB5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CEFCAAE0202AE9A500966EB5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		CEFCAAE1202AE9A500966EB5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CEFCAAE4202AE9A500966EB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CEFCAAE6202AE9A500966EB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CEFCAAE9202AE9A500966EB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CEFCAAEB202AE9A500966EB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEFCAAEC202AE9A500966EB5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CEFCAAF2202AE9A500966EB5 /* TrafficLightsDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrafficLightsDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEFCAAF6202AE9A500966EB5 /* TrafficLightsDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrafficLightsDemoTests.m; sourceTree = "<group>"; };
+		CEFCAAF8202AE9A500966EB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEFCAAFD202AE9A500966EB5 /* TrafficLightsDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrafficLightsDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEFCAB01202AE9A500966EB5 /* TrafficLightsDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrafficLightsDemoUITests.m; sourceTree = "<group>"; };
+		CEFCAB03202AE9A600966EB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CEFCAAD7202AE9A500966EB5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEFCAAEF202AE9A500966EB5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEFCAAFA202AE9A500966EB5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CEFCAAD1202AE9A500966EB5 = {
+			isa = PBXGroup;
+			children = (
+				CEFCAADC202AE9A500966EB5 /* TrafficLightsDemo */,
+				CEFCAAF5202AE9A500966EB5 /* TrafficLightsDemoTests */,
+				CEFCAB00202AE9A500966EB5 /* TrafficLightsDemoUITests */,
+				CEFCAADB202AE9A500966EB5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CEFCAADB202AE9A500966EB5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CEFCAADA202AE9A500966EB5 /* TrafficLightsDemo.app */,
+				CEFCAAF2202AE9A500966EB5 /* TrafficLightsDemoTests.xctest */,
+				CEFCAAFD202AE9A500966EB5 /* TrafficLightsDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CEFCAADC202AE9A500966EB5 /* TrafficLightsDemo */ = {
+			isa = PBXGroup;
+			children = (
+				CEFCAADD202AE9A500966EB5 /* AppDelegate.h */,
+				CEFCAADE202AE9A500966EB5 /* AppDelegate.m */,
+				CEFCAAE0202AE9A500966EB5 /* ViewController.h */,
+				CEFCAAE1202AE9A500966EB5 /* ViewController.m */,
+				CEFCAAE3202AE9A500966EB5 /* Main.storyboard */,
+				CEFCAAE6202AE9A500966EB5 /* Assets.xcassets */,
+				CEFCAAE8202AE9A500966EB5 /* LaunchScreen.storyboard */,
+				CEFCAAEB202AE9A500966EB5 /* Info.plist */,
+				CEFCAAEC202AE9A500966EB5 /* main.m */,
+			);
+			path = TrafficLightsDemo;
+			sourceTree = "<group>";
+		};
+		CEFCAAF5202AE9A500966EB5 /* TrafficLightsDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				CEFCAAF6202AE9A500966EB5 /* TrafficLightsDemoTests.m */,
+				CEFCAAF8202AE9A500966EB5 /* Info.plist */,
+			);
+			path = TrafficLightsDemoTests;
+			sourceTree = "<group>";
+		};
+		CEFCAB00202AE9A500966EB5 /* TrafficLightsDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CEFCAB01202AE9A500966EB5 /* TrafficLightsDemoUITests.m */,
+				CEFCAB03202AE9A600966EB5 /* Info.plist */,
+			);
+			path = TrafficLightsDemoUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CEFCAAD9202AE9A500966EB5 /* TrafficLightsDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEFCAB06202AE9A600966EB5 /* Build configuration list for PBXNativeTarget "TrafficLightsDemo" */;
+			buildPhases = (
+				CEFCAAD6202AE9A500966EB5 /* Sources */,
+				CEFCAAD7202AE9A500966EB5 /* Frameworks */,
+				CEFCAAD8202AE9A500966EB5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TrafficLightsDemo;
+			productName = TrafficLightsDemo;
+			productReference = CEFCAADA202AE9A500966EB5 /* TrafficLightsDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CEFCAAF1202AE9A500966EB5 /* TrafficLightsDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEFCAB09202AE9A600966EB5 /* Build configuration list for PBXNativeTarget "TrafficLightsDemoTests" */;
+			buildPhases = (
+				CEFCAAEE202AE9A500966EB5 /* Sources */,
+				CEFCAAEF202AE9A500966EB5 /* Frameworks */,
+				CEFCAAF0202AE9A500966EB5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CEFCAAF4202AE9A500966EB5 /* PBXTargetDependency */,
+			);
+			name = TrafficLightsDemoTests;
+			productName = TrafficLightsDemoTests;
+			productReference = CEFCAAF2202AE9A500966EB5 /* TrafficLightsDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CEFCAAFC202AE9A500966EB5 /* TrafficLightsDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEFCAB0C202AE9A600966EB5 /* Build configuration list for PBXNativeTarget "TrafficLightsDemoUITests" */;
+			buildPhases = (
+				CEFCAAF9202AE9A500966EB5 /* Sources */,
+				CEFCAAFA202AE9A500966EB5 /* Frameworks */,
+				CEFCAAFB202AE9A500966EB5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CEFCAAFF202AE9A500966EB5 /* PBXTargetDependency */,
+			);
+			name = TrafficLightsDemoUITests;
+			productName = TrafficLightsDemoUITests;
+			productReference = CEFCAAFD202AE9A500966EB5 /* TrafficLightsDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CEFCAAD2202AE9A500966EB5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = DEL;
+				TargetAttributes = {
+					CEFCAAD9202AE9A500966EB5 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					CEFCAAF1202AE9A500966EB5 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CEFCAAD9202AE9A500966EB5;
+					};
+					CEFCAAFC202AE9A500966EB5 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CEFCAAD9202AE9A500966EB5;
+					};
+				};
+			};
+			buildConfigurationList = CEFCAAD5202AE9A500966EB5 /* Build configuration list for PBXProject "TrafficLightsDemo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CEFCAAD1202AE9A500966EB5;
+			productRefGroup = CEFCAADB202AE9A500966EB5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CEFCAAD9202AE9A500966EB5 /* TrafficLightsDemo */,
+				CEFCAAF1202AE9A500966EB5 /* TrafficLightsDemoTests */,
+				CEFCAAFC202AE9A500966EB5 /* TrafficLightsDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CEFCAAD8202AE9A500966EB5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEFCAAEA202AE9A500966EB5 /* LaunchScreen.storyboard in Resources */,
+				CEFCAAE7202AE9A500966EB5 /* Assets.xcassets in Resources */,
+				CEFCAAE5202AE9A500966EB5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEFCAAF0202AE9A500966EB5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEFCAAFB202AE9A500966EB5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CEFCAAD6202AE9A500966EB5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEFCAAE2202AE9A500966EB5 /* ViewController.m in Sources */,
+				CEFCAAED202AE9A500966EB5 /* main.m in Sources */,
+				CEFCAADF202AE9A500966EB5 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEFCAAEE202AE9A500966EB5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEFCAAF7202AE9A500966EB5 /* TrafficLightsDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEFCAAF9202AE9A500966EB5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEFCAB02202AE9A500966EB5 /* TrafficLightsDemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CEFCAAF4202AE9A500966EB5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CEFCAAD9202AE9A500966EB5 /* TrafficLightsDemo */;
+			targetProxy = CEFCAAF3202AE9A500966EB5 /* PBXContainerItemProxy */;
+		};
+		CEFCAAFF202AE9A500966EB5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CEFCAAD9202AE9A500966EB5 /* TrafficLightsDemo */;
+			targetProxy = CEFCAAFE202AE9A500966EB5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CEFCAAE3202AE9A500966EB5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CEFCAAE4202AE9A500966EB5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CEFCAAE8202AE9A500966EB5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CEFCAAE9202AE9A500966EB5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CEFCAB04202AE9A600966EB5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CEFCAB05202AE9A600966EB5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CEFCAB07202AE9A600966EB5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TrafficLightsDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.de.some.TrafficLightsDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CEFCAB08202AE9A600966EB5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TrafficLightsDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.de.some.TrafficLightsDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CEFCAB0A202AE9A600966EB5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TrafficLightsDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.de.some.TrafficLightsDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TrafficLightsDemo.app/TrafficLightsDemo";
+			};
+			name = Debug;
+		};
+		CEFCAB0B202AE9A600966EB5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TrafficLightsDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.de.some.TrafficLightsDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TrafficLightsDemo.app/TrafficLightsDemo";
+			};
+			name = Release;
+		};
+		CEFCAB0D202AE9A600966EB5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TrafficLightsDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.de.some.TrafficLightsDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TrafficLightsDemo;
+			};
+			name = Debug;
+		};
+		CEFCAB0E202AE9A600966EB5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TrafficLightsDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.de.some.TrafficLightsDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TrafficLightsDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CEFCAAD5202AE9A500966EB5 /* Build configuration list for PBXProject "TrafficLightsDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEFCAB04202AE9A600966EB5 /* Debug */,
+				CEFCAB05202AE9A600966EB5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEFCAB06202AE9A600966EB5 /* Build configuration list for PBXNativeTarget "TrafficLightsDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEFCAB07202AE9A600966EB5 /* Debug */,
+				CEFCAB08202AE9A600966EB5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEFCAB09202AE9A600966EB5 /* Build configuration list for PBXNativeTarget "TrafficLightsDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEFCAB0A202AE9A600966EB5 /* Debug */,
+				CEFCAB0B202AE9A600966EB5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEFCAB0C202AE9A600966EB5 /* Build configuration list for PBXNativeTarget "TrafficLightsDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEFCAB0D202AE9A600966EB5 /* Debug */,
+				CEFCAB0E202AE9A600966EB5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CEFCAAD2202AE9A500966EB5 /* Project object */;
+}
