@@ -22,19 +22,12 @@
     [self createDefaultLights];
     [self doUpdateView];
     
-    //Running the timer
-    [self performSelector:@selector(tickTimeWithInterval:) withObject:[NSNumber numberWithDouble:_timeQuant] afterDelay:_timeQuant];
-    [[NSRunLoop currentRunLoop] run];
-}
-
-- (void)tickTimeWithInterval:(NSNumber *)interval {
-    DebugLog(@"tick");
-    [self performSelector:@selector(tickTimeWithInterval:) withObject:interval afterDelay:[interval doubleValue]];
-    
-    //Sending message Tick to all the objects
-    for (DELLight *currentLight in self.lightsArray) {
-        [currentLight recieveOneTick];
-    }
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:_timeQuant repeats:YES block:^(NSTimer * _Nonnull timer) {
+        for (DELLight *currentLight in self.lightsArray) {
+            [currentLight recieveOneTick];
+        }
+    }];
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
 
 - (void)createDefaultLights {
