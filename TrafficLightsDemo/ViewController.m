@@ -4,31 +4,29 @@
 
 @interface ViewController ()
 
-//@property (weak, nonatomic) UIImageView *imageViewOne;
-//@property (strong, nonatomic) NSMutableArray<UIImageView *> *lightStatesImages;
 @property (strong, nonatomic) NSMutableArray<DELLightUI *> *lightsHub;
 @property (assign, nonatomic) BOOL areLightsAttached;
-
 @property (strong, nonatomic) DELControllerWorldUI *worldController;
 
 @end
 
 @implementation ViewController
+- (IBAction)startTouch:(UIButton *)sender {
+    NSLog(@"Start button pressed");
+    [self.worldController start];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     //initializing block
-//    _lightStatesImages = [[NSMutableArray alloc] init];
     _lightsHub = [[NSMutableArray alloc] init];
     _areLightsAttached = NO;
     _worldController = [[DELControllerWorldUI alloc] init];
     _worldController.delegate = self;
     
-    [self.worldController start];
+//    [self.worldController start];
     
-//    [self createLightWithXcoord:170 andYcoord:100 andWidth:50 andColors:[[NSArray alloc] initWithObjects:[UIColor redColor], [UIColor yellowColor], [UIColor greenColor], nil]];
-
 }
 
 //creating Light
@@ -43,12 +41,9 @@
     
     for (UIColor *currentColor in colors) {
         UIImageView *imageViewCurrent = [self createLightViewWithColor:currentColor andCoordX:currentX andCoordY:currentY andWidth:width andHeight:width];
-//        [self.lightStatesImages addObject:imageViewCurrent];
         
         [lightUI.lightStatesImages addObject:imageViewCurrent];
-//        [self.lightsHub addObject:lightUI];
         [images addObject:imageViewCurrent];
-        //self.view.frame = UIScreen.mainScreen.bounds;
         [view addSubview:imageViewCurrent];
         currentY+= width;
     }
@@ -66,14 +61,6 @@
     return imageView;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-//    [self blinkView:[self.lightStatesImages objectAtIndex:1] withDuration:0.5f];
-    
-//    [self.worldController start];
-}
-
 - (void) blinkView:(UIView *)view withDuration:(double)duration {
     [UIView animateWithDuration:duration
                           delay:0
@@ -89,6 +76,7 @@
 
 - (void)recieveWorldChange:(DELControllerWorldUI *)controllerWorldUI {
     NSMutableArray<DELLight *> *lightsArray = controllerWorldUI.lightsArray;
+//    NSLog(@"%s", __func__);
     
     if (!self.areLightsAttached) { //first iteration
         double xCoord = 20;
@@ -149,7 +137,7 @@
 - (void)switchColorArray:(NSMutableArray *)array On:(BOOL)on forLight:(DELLightUI *)currentLightUI {
 //    [self hideAllViews];
     
-    [self hideAllColorsForLightUI:currentLightUI];
+//    [self hideAllColorsForLightUI:currentLightUI];
     
     BOOL blinking = NO;
     BOOL off = NO;
