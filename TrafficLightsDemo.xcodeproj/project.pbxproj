@@ -11,6 +11,7 @@
 		CE44D15A202B043E00C4CC34 /* DELControllerWorld.m in Sources */ = {isa = PBXBuildFile; fileRef = CE44D157202B043E00C4CC34 /* DELControllerWorld.m */; };
 		CE44D15E202B044700C4CC34 /* DELLightState.m in Sources */ = {isa = PBXBuildFile; fileRef = CE44D15C202B044700C4CC34 /* DELLightState.m */; };
 		CE44D166202B078500C4CC34 /* DELControllerWorldUI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE44D165202B078500C4CC34 /* DELControllerWorldUI.m */; };
+		CE44D16C202B4C2600C4CC34 /* DELLightUI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE44D16B202B4C2600C4CC34 /* DELLightUI.m */; };
 		CEFCAADF202AE9A500966EB5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFCAADE202AE9A500966EB5 /* AppDelegate.m */; };
 		CEFCAAE2202AE9A500966EB5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFCAAE1202AE9A500966EB5 /* ViewController.m */; };
 		CEFCAAE5202AE9A500966EB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEFCAAE3202AE9A500966EB5 /* Main.storyboard */; };
@@ -50,6 +51,8 @@
 		CE44D164202B078500C4CC34 /* DELControllerWorldUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DELControllerWorldUI.h; sourceTree = "<group>"; };
 		CE44D165202B078500C4CC34 /* DELControllerWorldUI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DELControllerWorldUI.m; sourceTree = "<group>"; };
 		CE44D167202B121A00C4CC34 /* DELControllerWorldUIDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DELControllerWorldUIDelegate.h; sourceTree = "<group>"; };
+		CE44D16A202B4C2600C4CC34 /* DELLightUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DELLightUI.h; sourceTree = "<group>"; };
+		CE44D16B202B4C2600C4CC34 /* DELLightUI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DELLightUI.m; sourceTree = "<group>"; };
 		CEFCAADA202AE9A500966EB5 /* TrafficLightsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrafficLightsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEFCAADD202AE9A500966EB5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CEFCAADE202AE9A500966EB5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -116,6 +119,8 @@
 		CEFCAADC202AE9A500966EB5 /* TrafficLightsDemo */ = {
 			isa = PBXGroup;
 			children = (
+				CE44D16A202B4C2600C4CC34 /* DELLightUI.h */,
+				CE44D16B202B4C2600C4CC34 /* DELLightUI.m */,
 				CEFCAADD202AE9A500966EB5 /* AppDelegate.h */,
 				CEFCAADE202AE9A500966EB5 /* AppDelegate.m */,
 				CEFCAAE0202AE9A500966EB5 /* ViewController.h */,
@@ -293,6 +298,7 @@
 			files = (
 				CE44D166202B078500C4CC34 /* DELControllerWorldUI.m in Sources */,
 				CEFCAAE2202AE9A500966EB5 /* ViewController.m in Sources */,
+				CE44D16C202B4C2600C4CC34 /* DELLightUI.m in Sources */,
 				CE44D15A202B043E00C4CC34 /* DELControllerWorld.m in Sources */,
 				CE44D15E202B044700C4CC34 /* DELLightState.m in Sources */,
 				CEFCAAED202AE9A500966EB5 /* main.m in Sources */,
@@ -463,7 +469,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = TrafficLightsDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.de.some.TrafficLightsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -478,7 +484,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = TrafficLightsDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.de.some.TrafficLightsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
