@@ -48,6 +48,7 @@
     [lightRoadOne addStateWithInterval:1 andLightStateColor:LightColorLGreen      | LightColorBlinking];
     [lightRoadOne addStateWithInterval:1 andLightStateColor:LightColorYellow];
     [lightRoadOne addStateWithInterval:5 andLightStateColor:LightColorRed];
+    [lightRoadOne setPossibleLights:[[NSArray<DELLightState *> alloc]initWithObjects:[[DELLightState alloc] initWithInterval:0 andColor:LightColorRed], [[DELLightState alloc] initWithInterval:0 andColor:LightColorYellow], [[DELLightState alloc] initWithInterval:0 andColor:LightColorLGreen], nil]];
     
     //Second Light
     DELLight *lightRoadTwo = [[DELLight alloc] init];
@@ -60,6 +61,7 @@
     [lightRoadTwo addStateWithInterval:1 andLightStateColor:LightColorRed           | LightColorYellow];
     [lightRoadTwo addStateWithInterval:4 andLightStateColor:LightColorRed];
     [lightRoadTwo addStateWithInterval:1 andLightStateColor:LightColorRed           | LightColorYellow];
+    [lightRoadTwo setPossibleLights:[[NSArray<DELLightState *> alloc]initWithObjects:[[DELLightState alloc] initWithInterval:0 andColor:LightColorRed], [[DELLightState alloc] initWithInterval:0 andColor:LightColorYellow], [[DELLightState alloc] initWithInterval:0 andColor:LightColorLGreen], nil]];
     
     //First Pedestrian Light
     DELLight *lightPedestrianOne = [[DELLight alloc] init];
@@ -68,6 +70,7 @@
     [lightPedestrianOne addStateWithInterval:20 andLightStateColor:LightColorRed];
     [lightPedestrianOne addStateWithInterval:4 andLightStateColor:LightColorLGreen];
     [lightPedestrianOne addStateWithInterval:1 andLightStateColor:LightColorLGreen  | LightColorBlinking];
+    [lightPedestrianOne setPossibleLights:[[NSArray<DELLightState *> alloc]initWithObjects:[[DELLightState alloc] initWithInterval:0 andColor:LightColorRed], [[DELLightState alloc] initWithInterval:0 andColor:LightColorLGreen], nil]];
     
     //adding created Lights to World array
     [[self lightsArray] addObject:lightRoadOne];
@@ -75,12 +78,12 @@
     [[self lightsArray] addObject:lightPedestrianOne];
     
     //Night mode
-    [lightRoadOne setNightStateWithInterval:3 andLightStateColor:LightColorYellow | LightColorBlinking];
-    [lightRoadTwo setNightStateWithInterval:3 andLightStateColor:LightColorYellow | LightColorBlinking];
-    [lightPedestrianOne setNightStateWithInterval:3 andLightStateColor:LightColorOff];
-    [lightRoadOne setNightMode:YES];
-    [lightRoadTwo setNightMode:YES];
-    [lightPedestrianOne setNightMode:YES];
+//    [lightRoadOne setNightStateWithInterval:3 andLightStateColor:LightColorYellow | LightColorBlinking];
+//    [lightRoadTwo setNightStateWithInterval:3 andLightStateColor:LightColorYellow | LightColorBlinking];
+//    [lightPedestrianOne setNightStateWithInterval:3 andLightStateColor:LightColorOff];
+//    [lightRoadOne setNightMode:YES];
+//    [lightRoadTwo setNightMode:YES];
+//    [lightPedestrianOne setNightMode:YES];
 }
 
 - (void)recieveLightChange:(DELLight *)lightChanged {
