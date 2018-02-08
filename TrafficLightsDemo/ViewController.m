@@ -25,12 +25,16 @@
     _worldController = [[DELControllerWorldUI alloc] init];
     _worldController.delegate = self;
     
+    [self.worldController start];
+    
 //    [self createLightWithXcoord:170 andYcoord:100 andWidth:50 andColors:[[NSArray alloc] initWithObjects:[UIColor redColor], [UIColor yellowColor], [UIColor greenColor], nil]];
 
 }
 
 //creating Light
 - (void)createLightWithXcoord:(CGFloat)coordX andYcoord:(CGFloat)coordY andWidth:(CGFloat)width andColors:(NSArray<UIColor *> *)colors {
+    UIView *view = self.contentView;
+    
     CGFloat currentX = coordX;
     CGFloat currentY = coordY;
     
@@ -44,8 +48,8 @@
         [lightUI.lightStatesImages addObject:imageViewCurrent];
 //        [self.lightsHub addObject:lightUI];
         [images addObject:imageViewCurrent];
-
-        [self.view addSubview:imageViewCurrent];
+        //self.view.frame = UIScreen.mainScreen.bounds;
+        [view addSubview:imageViewCurrent];
         currentY+= width;
     }
     
@@ -67,7 +71,7 @@
     
 //    [self blinkView:[self.lightStatesImages objectAtIndex:1] withDuration:0.5f];
     
-    [self.worldController start];
+//    [self.worldController start];
 }
 
 - (void) blinkView:(UIView *)view withDuration:(double)duration {
@@ -130,14 +134,51 @@
 }
 
 - (void)checkInColors:(LightColor)currentLightColors for:(DELLightUI *)currentLightUI {
+    NSMutableArray *array = [[NSMutableArray alloc] init];
     LightColor enumColor = 1;
     for (int i = 0; i < 6; i++ ) {
         enumColor<<=1;
         if (enumColor & currentLightColors) {
-            [self switchColor:enumColor On:YES forLight:currentLightUI];
-        } else {
-            [self switchColor:enumColor On:NO forLight:currentLightUI];
+            [array addObject:[NSNumber numberWithUnsignedInteger:enumColor]];
         }
+    }
+    
+    [self switchColorArray:array On:YES forLight:currentLightUI];
+}
+
+- (void)switchColorArray:(NSMutableArray *)array On:(BOOL)on forLight:(DELLightUI *)currentLightUI {
+//    [self hideAllViews];
+    
+    [self hideAllColorsForLightUI:currentLightUI];
+    
+    BOOL blinking = NO;
+    BOOL off = NO;
+    UIView *currentColorView  = nil;
+    for (int i = 0; i < [array count] ; i++) {
+        LightColor enumColor = [[array objectAtIndex:i] unsignedIntegerValue];
+        
+        if (LightColorBlinking & enumColor) {
+            blinking = YES;
+        } else if (LightColorOff & enumColor) {
+            off = YES;
+        }
+        
+        if (!currentColorView) {
+            currentColorView = [self findViewWithColor:enumColor inLight:currentLightUI];
+        }
+    }
+    currentColorView.hidden = !on;
+    if (blinking) {
+        [self blinkView:currentColorView withDuration:0.5f];
+    } else if(off) {
+        currentColorView.hidden = YES;
+    }
+}
+
+- (void)hideAllColorsForLightUI:(DELLightUI *)currentLightUI {
+//    UIView *currentColorView  = nil;
+    for (UIView *image in currentLightUI.lightStatesImages) {
+        image.hidden = YES;
     }
 }
 
@@ -152,8 +193,8 @@
 }
 
 - (UIView *)findViewWithColor:(LightColor)enumColor inLight:(DELLightUI *)currentLightUI {
+    UIColor *colorFromEnum = [self getUIColorFrom:enumColor];
     for (UIView *view in currentLightUI.lightStatesImages) {
-        UIColor *colorFromEnum = [self getUIColorFrom:enumColor];
         if ([view.backgroundColor isEqual:colorFromEnum]) {
             return view;
         }
@@ -180,10 +221,11 @@
 -(void)hideAllViews {
     if (self.lightsHub) {
         for (DELLightUI *lght in self.lightsHub) {
-            for (UIImageView *imageView in lght.lightStatesImages) {
+            for (UIView *imageView in lght.lightStatesImages) {
                 imageView.hidden = YES;
+//                NSLog(@"Hiding image view: %@", [imageView description]);
             }
-            NSLog(@"Hiding %@", [lght description]);
+//            NSLog(@"Hiding %@", [lght description]);
         }
     }
 

@@ -11,6 +11,8 @@
 
 @interface ViewController : UIViewController<DELControllerWorldUIDelegate>
 
+@property (weak, nonatomic) IBOutlet UIView *contentView;
+
 
 @end
 
