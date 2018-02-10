@@ -25,7 +25,7 @@
 }
 
 - (void)recieveOneTick {
-    DebugLog(@"calling: %s", __func__);
+//    DebugLog(@"calling: %s", __func__);
     self.currentTicks++;
     NSNumber *intervalNumber = self.nightMode ? [self.nightLightState interval] : [[[self lightStates] objectAtIndex:self.currentStateNumber] interval];
     if ([intervalNumber integerValue] == self.currentTicks) {
@@ -44,7 +44,7 @@
         self.currentStateNumber = [self currentStateNumber] == --maxStateNumber ? 0 : ++self.currentStateNumber;
     }
     [self.delegate recieveLightChange:self];
-    DebugLog(@"!_change status_! to: %@\n", self);
+//    DebugLog(@"!_change status_! to: %@\n", self);
 }
 
 - (NSString *)description {
