@@ -19,5 +19,6 @@
 - (void)setNightStateWithInterval:(NSUInteger)interval andLightStateColor:(LightColor)color;
 - (void)recieveOneTick;
 - (void)changeStatusToNext;
+- (DELLightState *)getCurrentState;
 
 @end

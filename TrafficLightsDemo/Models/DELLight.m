@@ -3,7 +3,7 @@
 @implementation DELLight
 
 //Designated initializer
-- (instancetype)initWithLightsArray:(NSMutableArray *)array  {
+- (instancetype)initWithLightsArray:(NSMutableArray *)array {
     self = [super init];
     if (self) {
         _lightStates = array;
@@ -15,7 +15,7 @@
     return [self initWithLightsArray:[[NSMutableArray alloc] init]];
 }
 
-- (void)addStateWithInterval:(NSUInteger)interval andLightStateColor:(LightColor)color  {
+- (void)addStateWithInterval:(NSUInteger)interval andLightStateColor:(LightColor)color {
     DELLightState *state = [[DELLightState alloc] initWithInterval:[NSNumber numberWithUnsignedInteger:interval] andColor:color];
     [[self lightStates] addObject:state];
 }
@@ -47,10 +47,13 @@
 //    DebugLog(@"!_change status_! to: %@\n", self);
 }
 
+- (DELLightState *)getCurrentState {
+        DELLightState *currentLightState = self.nightMode ? [self nightLightState] : [[self lightStates] objectAtIndex:[self currentStateNumber]];
+    return currentLightState;
+}
+
 - (NSString *)description {
-    DELLightState *currentLightState = self.nightMode ? [self nightLightState] : [[self lightStates] objectAtIndex:[self currentStateNumber]];
-    NSString *currentState = [currentLightState description];
-    NSString *result = [NSString stringWithFormat:@"%@ -> %@", [self name], currentState];
+    NSString *result = [NSString stringWithFormat:@"%@ -> %@", [self name], [[self getCurrentState] description]];
     
     return result;
 }

@@ -7,12 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DELControllerWorldUIDelegate.h"
 
-@interface ViewController : UIViewController<DELControllerWorldUIDelegate>
-
-@property (weak, nonatomic) IBOutlet UIView *contentView;
-
+@interface ViewController : UIViewController
 
 @end
 
