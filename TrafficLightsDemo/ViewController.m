@@ -12,7 +12,7 @@
 
 @implementation ViewController
 - (IBAction)startTouch:(UIButton *)sender {
-    NSLog(@"Start button pressed");
+    DebugLog(@"Start button pressed");
     [self.worldController start];
 }
 
@@ -24,8 +24,6 @@
     _areLightsAttached = NO;
     _worldController = [[DELControllerWorldUI alloc] init];
     _worldController.delegate = self;
-    
-//    [self.worldController start];
     
 }
 
@@ -57,58 +55,26 @@
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(coordX, coordY, width, height)];
     imageView.backgroundColor = color;
     imageView.hidden = YES;
-
+    
     return imageView;
 }
 
-- (void) blinkView:(UIView *)view withDuration:(double)duration {
+- (void)blinkView:(UIView *)view withDuration:(double)duration {
+    view.alpha = 0;
     [UIView animateWithDuration:duration
                           delay:0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse
                      animations:^{
-                         view.backgroundColor = [UIColor clearColor];
+                         view.alpha = 1.0;
                      }
-                     completion:^(BOOL finished) {
-//                         NSLog(@"animation finished with result %d", finished);
-                     }];
-    
+                     completion:nil];
 }
 
 - (void)recieveWorldChange:(DELControllerWorldUI *)controllerWorldUI {
-    NSMutableArray<DELLight *> *lightsArray = controllerWorldUI.lightsArray;
-//    NSLog(@"%s", __func__);
-    
-    if (!self.areLightsAttached) { //first iteration
-        double xCoord = 20;
-        int i = 0;
-        for (DELLight *currentLight in lightsArray) {
-            
-            NSMutableArray<UIColor *> *colorsArray = [[NSMutableArray alloc] init];
-            UIColor *currentColor = nil;
-            NSArray<DELLightState *> *possible = currentLight.possibleLights;
-            for (DELLightState *currentLightState in possible) {
-                LightColor currentLightColor = currentLightState.color;
-                if (currentLightColor & LightColorRed) {
-                    currentColor = UIColor.redColor;
-                } else if (currentLightColor & LightColorYellow) {
-                    currentColor = UIColor.yellowColor;
-                } else if (currentLightColor & LightColorLGreen) {
-                    currentColor = UIColor.greenColor;
-                } else {
-                    currentColor = UIColor.brownColor;
-                }
-                
-                [colorsArray addObject:currentColor];
-            }
-            
-            [self createLightWithXcoord:xCoord andYcoord:100 andWidth:50 andColors:colorsArray];
-            xCoord+= 100;
-            i++;
-        }
-        self.areLightsAttached = YES;
+    if (!self.areLightsAttached) {
+        [self attachLights:controllerWorldUI.lightsArray];
     }
     
-    //each iteration
     for (DELLight *currentLightModel in controllerWorldUI.lightsArray) {
         DELLightState *currentLightState = currentLightModel.nightMode ? [currentLightModel nightLightState] : [[currentLightModel lightStates] objectAtIndex:[currentLightModel currentStateNumber]];
         LightColor currentLightColors = currentLightState.color;
@@ -119,6 +85,36 @@
         [self checkInColors:currentLightColors for:currentLightUI];
     }
     
+}
+
+- (void)attachLights:(NSMutableArray<DELLight *> *)lightsArray {
+    double xCoord = 20;
+    int i = 0;
+    for (DELLight *currentLight in lightsArray) {
+        
+        NSMutableArray<UIColor *> *colorsArray = [[NSMutableArray alloc] init];
+        UIColor *currentColor = nil;
+        NSArray<DELLightState *> *possible = currentLight.possibleLights;
+        for (DELLightState *currentLightState in possible) {
+            LightColor currentLightColor = currentLightState.color;
+            if (currentLightColor & LightColorRed) {
+                currentColor = UIColor.redColor;
+            } else if (currentLightColor & LightColorYellow) {
+                currentColor = UIColor.yellowColor;
+            } else if (currentLightColor & LightColorLGreen) {
+                currentColor = UIColor.greenColor;
+            } else {
+                currentColor = UIColor.brownColor;
+            }
+            
+            [colorsArray addObject:currentColor];
+        }
+        
+        [self createLightWithXcoord:xCoord andYcoord:100 andWidth:50 andColors:colorsArray];
+        xCoord+= 100;
+        i++;
+    }
+    self.areLightsAttached = YES;
 }
 
 - (void)checkInColors:(LightColor)currentLightColors for:(DELLightUI *)currentLightUI {
@@ -135,9 +131,7 @@
 }
 
 - (void)switchColorArray:(NSMutableArray *)array On:(BOOL)on forLight:(DELLightUI *)currentLightUI {
-//    [self hideAllViews];
-    
-//    [self hideAllColorsForLightUI:currentLightUI];
+    [self hideAllColorsForLightUI:currentLightUI];
     
     BOOL blinking = NO;
     BOOL off = NO;
@@ -153,30 +147,21 @@
         
         if (!currentColorView) {
             currentColorView = [self findViewWithColor:enumColor inLight:currentLightUI];
+            currentColorView.hidden = !on;
+            if (blinking) {
+                [self blinkView:currentColorView withDuration:0.2f];
+            } else if(off) {
+                currentColorView.hidden = YES;
+            }
+            currentColorView = nil;
         }
     }
-    currentColorView.hidden = !on;
-    if (blinking) {
-        [self blinkView:currentColorView withDuration:0.5f];
-    } else if(off) {
-        currentColorView.hidden = YES;
-    }
+    
 }
 
 - (void)hideAllColorsForLightUI:(DELLightUI *)currentLightUI {
-//    UIView *currentColorView  = nil;
     for (UIView *image in currentLightUI.lightStatesImages) {
         image.hidden = YES;
-    }
-}
-
-- (void)switchColor:(LightColor)enumColor On:(BOOL)on forLight:(DELLightUI *)currentLightUI {
-    UIView *currentColorView = [self findViewWithColor:enumColor inLight:currentLightUI];
-    currentColorView.hidden = !on;
-    if (LightColorBlinking & enumColor) {
-        [self blinkView:currentColorView withDuration:0.5f];
-    } else if(LightColorOff & enumColor) {
-        currentColorView.hidden = YES;
     }
 }
 
@@ -184,6 +169,7 @@
     UIColor *colorFromEnum = [self getUIColorFrom:enumColor];
     for (UIView *view in currentLightUI.lightStatesImages) {
         if ([view.backgroundColor isEqual:colorFromEnum]) {
+            [view.layer removeAllAnimations];
             return view;
         }
     }
@@ -206,22 +192,10 @@
     return currentColor;
 }
 
--(void)hideAllViews {
-    if (self.lightsHub) {
-        for (DELLightUI *lght in self.lightsHub) {
-            for (UIView *imageView in lght.lightStatesImages) {
-                imageView.hidden = YES;
-//                NSLog(@"Hiding image view: %@", [imageView description]);
-            }
-//            NSLog(@"Hiding %@", [lght description]);
-        }
-    }
-
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 @end
+
