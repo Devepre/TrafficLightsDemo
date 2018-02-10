@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "DELLight.h"
+#import "DELLightService.h"
 
 @interface DELControllerWorld : NSObject<DELLightDelegate>
 

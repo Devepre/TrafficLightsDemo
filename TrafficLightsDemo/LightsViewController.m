@@ -1,6 +1,7 @@
 #import "LightsViewController.h"
 #import "DELControllerWorldUI.h"
 #import "DELLightUI.h"
+#import "DELLightService.h"
 
 @interface LightsViewController ()
 
@@ -78,9 +79,11 @@
         [self attachLights:controllerWorldUI.lightsArray];
     }
     
+    
+    
     for (DELLight *currentLightModel in controllerWorldUI.lightsArray) {
-//        DELLightState *currentLightState = currentLightModel.nightMode ? [currentLightModel nightLightState] : [[currentLightModel lightStates] objectAtIndex:[currentLightModel currentStateNumber]];
-        DELLightState *currentLightState = [currentLightModel getCurrentState];
+        DELLightService *lightService = [[DELLightService alloc] init];
+        DELLightState *currentLightState = [lightService getCurrentStateForLight:currentLightModel];
         LightColor currentLightColors = currentLightState.color;
         
         NSUInteger idx = [controllerWorldUI.lightsArray indexOfObject:currentLightModel];

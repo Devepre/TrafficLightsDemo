@@ -13,6 +13,7 @@
 		CE44D166202B078500C4CC34 /* DELControllerWorldUI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE44D165202B078500C4CC34 /* DELControllerWorldUI.m */; };
 		CE44D16C202B4C2600C4CC34 /* DELLightUI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE44D16B202B4C2600C4CC34 /* DELLightUI.m */; };
 		CEE64583202F26B700615B09 /* LightsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE64582202F26B700615B09 /* LightsViewController.m */; };
+		CEE6458B202F933300615B09 /* DELLightService.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE64589202F933300615B09 /* DELLightService.m */; };
 		CEFCAADF202AE9A500966EB5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFCAADE202AE9A500966EB5 /* AppDelegate.m */; };
 		CEFCAAE2202AE9A500966EB5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFCAAE1202AE9A500966EB5 /* ViewController.m */; };
 		CEFCAAE5202AE9A500966EB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEFCAAE3202AE9A500966EB5 /* Main.storyboard */; };
@@ -56,6 +57,8 @@
 		CE44D16B202B4C2600C4CC34 /* DELLightUI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DELLightUI.m; sourceTree = "<group>"; };
 		CEE64581202F26B700615B09 /* LightsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LightsViewController.h; sourceTree = "<group>"; };
 		CEE64582202F26B700615B09 /* LightsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LightsViewController.m; sourceTree = "<group>"; };
+		CEE64589202F933300615B09 /* DELLightService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DELLightService.m; sourceTree = "<group>"; };
+		CEE6458A202F933300615B09 /* DELLightService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DELLightService.h; sourceTree = "<group>"; };
 		CEFCAADA202AE9A500966EB5 /* TrafficLightsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrafficLightsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEFCAADD202AE9A500966EB5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CEFCAADE202AE9A500966EB5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -125,6 +128,15 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		CEE64588202F933300615B09 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CEE6458A202F933300615B09 /* DELLightService.h */,
+				CEE64589202F933300615B09 /* DELLightService.m */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		CEFCAAD1202AE9A500966EB5 = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +164,7 @@
 				CEFCAAE1202AE9A500966EB5 /* ViewController.m */,
 				CEE64581202F26B700615B09 /* LightsViewController.h */,
 				CEE64582202F26B700615B09 /* LightsViewController.m */,
+				CEE64588202F933300615B09 /* Services */,
 				CEE6457D202F1C1C00615B09 /* Controllers */,
 				CEE6457C202F1B7D00615B09 /* Models */,
 				CEFCAAEC202AE9A500966EB5 /* main.m */,
@@ -317,6 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEE6458B202F933300615B09 /* DELLightService.m in Sources */,
 				CE44D166202B078500C4CC34 /* DELControllerWorldUI.m in Sources */,
 				CEFCAAE2202AE9A500966EB5 /* ViewController.m in Sources */,
 				CE44D16C202B4C2600C4CC34 /* DELLightUI.m in Sources */,
