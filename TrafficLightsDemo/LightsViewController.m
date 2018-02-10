@@ -55,7 +55,7 @@
 - (UIImageView *)createLightViewWithColor:(UIColor *)color andCoordX:(CGFloat)coordX andCoordY:(CGFloat)coordY andWidth:(CGFloat)width andHeight:(CGFloat)height  {
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(coordX, coordY, width, height)];
     imageView.backgroundColor = color;
-    imageView.hidden = YES;
+    [self turnViewOff:imageView];
     
     imageView.layer.cornerRadius = width / 2;
     imageView.clipsToBounds = YES;
@@ -78,8 +78,6 @@
     if (!self.areLightsAttached) {
         [self attachLights:controllerWorldUI.lightsArray];
     }
-    
-    
     
     for (DELLight *currentLightModel in controllerWorldUI.lightsArray) {
         DELLightService *lightService = [[DELLightService alloc] init];
@@ -155,10 +153,11 @@
         if (!currentColorView) {
             currentColorView = [self findViewWithColor:enumColor inLight:currentLightUI];
             currentColorView.hidden = !on;
+            currentColorView.alpha = 1;
             if (blinking) {
                 [self blinkView:currentColorView withDuration:0.2f];
             } else if(off) {
-                currentColorView.hidden = YES;
+                [self turnViewOff:currentColorView];
             }
             currentColorView = nil;
         }
@@ -166,9 +165,14 @@
     
 }
 
+- (void)turnViewOff:(UIView *)currentColorView {
+    [currentColorView.layer removeAllAnimations];
+    currentColorView.alpha = .15;
+}
+
 - (void)hideAllColorsForLightUI:(DELLightUI *)currentLightUI {
     for (UIView *image in currentLightUI.lightStatesImages) {
-        image.hidden = YES;
+        [self turnViewOff:image];
     }
 }
 
