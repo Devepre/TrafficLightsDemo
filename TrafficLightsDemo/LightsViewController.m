@@ -16,17 +16,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self startWorld];
+}
+
+- (void)startWorld {
     //initializing block
     _lightsHub = [[NSMutableArray alloc] init];
     _areLightsAttached = NO;
     _worldController = [[DELControllerWorldUI alloc] init];
     _worldController.delegate = self;
-    
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
     [self.worldController start];
 }
 
@@ -219,6 +221,27 @@
     }
     
     return currentColor;
+}
+
+- (IBAction)stopViewLights:(UIButton *)sender {
+    if (self.worldController.working) {
+        [sender setTitle:@"Start" forState:UIControlStateNormal];
+        [self.worldController stop];
+        [self stopLights];
+    } else {
+        [sender setTitle:@"Powe off" forState:UIControlStateNormal];
+        [self startWorld];
+    }
+    
+
+}
+
+- (void)stopLights {
+    for (DELLightUI *light in self.lightsHub) {
+        for (UIView *view in light.lightStatesImages) {
+            [self turnViewOff:view];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {
