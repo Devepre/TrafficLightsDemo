@@ -64,8 +64,7 @@
 }
 
 - (void)blinkView:(UIView *)view withDuration:(double)duration {
-    [UIView beginAnimations:@"" context:nil];
-    view.alpha = 0;
+    view.alpha = 0.15;
     [UIView animateWithDuration:duration
                           delay:0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse | UIViewAnimationOptionAllowUserInteraction
@@ -73,10 +72,11 @@
                          view.alpha = 1.0;
                      }
                      completion:nil];
-    [UIView commitAnimations];
 }
 
 - (void)recieveWorldChange:(DELControllerWorldUI *)controllerWorldUI {
+    [UIView beginAnimations:@"" context:nil];
+    
     if (!self.areLightsAttached) {
         [self attachLights:controllerWorldUI.lightsArray];
     }
@@ -91,7 +91,7 @@
         
         [self checkInColors:currentLightColors for:currentLightUI];
     }
-    
+    [UIView commitAnimations];
 }
 
 - (void)attachLights:(NSMutableArray<DELLight *> *)lightsArray {
@@ -133,17 +133,16 @@
             [array addObject:[NSNumber numberWithUnsignedInteger:enumColor]];
         }
     }
-    
     [self switchColorArray:array On:YES forLight:currentLightUI];
 }
 
 - (void)switchColorArray:(NSMutableArray *)array On:(BOOL)on forLight:(DELLightUI *)currentLightUI {
-    [self hideAllColorsForLightUI:currentLightUI];
+    [self hideAllColorsForLightUI:currentLightUI andArray:array];
     
     BOOL blinking = NO;
     BOOL off = NO;
     UIView *currentColorView  = nil;
-    for (int i = 0; i < [array count] ; i++) {
+    for (int i = 0; i < [array count]; i++) {
         LightColor enumColor = [[array objectAtIndex:i] unsignedIntegerValue];
         
         if (LightColorBlinking & enumColor) {
@@ -154,8 +153,9 @@
         
         if (!currentColorView) {
             currentColorView = [self findViewWithColor:enumColor inLight:currentLightUI];
-            currentColorView.hidden = !on;
+//            currentColorView.hidden = !on;
             currentColorView.alpha = 1;
+            
             if (blinking) {
                 [self blinkView:currentColorView withDuration:0.2f];
             } else if(off) {
@@ -164,17 +164,33 @@
             currentColorView = nil;
         }
     }
-    
 }
 
 - (void)turnViewOff:(UIView *)currentColorView {
+    printf("\nTurning view of: %s %s\n", [[currentColorView description] UTF8String], [[currentColorView.backgroundColor description] UTF8String]);
     [currentColorView.layer removeAllAnimations];
     currentColorView.alpha = .15;
 }
 
-- (void)hideAllColorsForLightUI:(DELLightUI *)currentLightUI {
+- (void)hideAllColorsForLightUI:(DELLightUI *)currentLightUI andArray:(NSMutableArray *)array {
+//    for (UIView *image in currentLightUI.lightStatesImages) {
+//        [self turnViewOff:image];
+//    }
+    BOOL colorFound = NO;
+    LightColor currentColor = -1;
     for (UIView *image in currentLightUI.lightStatesImages) {
-        [self turnViewOff:image];
+        colorFound = NO;
+        for (int i = 0; i < [array count]; i++) {
+            currentColor = [[array objectAtIndex:i] unsignedIntegerValue];
+            if (image.backgroundColor == [self getUIColorFrom:currentColor]) {
+                colorFound = YES;
+                NSLog(@"Color found: %@ %@", image, image.backgroundColor);
+                break;
+            }
+        }
+        if (!colorFound) {
+            [self turnViewOff:image];
+        }
     }
 }
 
