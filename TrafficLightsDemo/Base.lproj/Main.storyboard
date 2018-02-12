@@ -56,7 +56,36 @@
                     <view key="view" contentMode="scaleToFill" id="aHH-Xm-YCf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEt-dQ-XQ6">
+                                <rect key="frame" x="140" y="607" width="94" height="30"/>
+                                <state key="normal" title="Back to menu"/>
+                                <connections>
+                                    <segue destination="f5N-Q6-JW5" kind="unwind" unwindAction="unwindToMainViewController:" id="GI8-IB-HLt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tdx-hi-hyM">
+                                <rect key="frame" x="153" y="557" width="69" height="30"/>
+                                <state key="normal" title="Power Off"/>
+                                <connections>
+                                    <action selector="stopViewLights:" destination="vqH-pb-bfA" eventType="touchUpInside" id="XwT-VC-yDk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pLs-Lj-2w6">
+                                <rect key="frame" x="242" y="537" width="103" height="30"/>
+                                <state key="normal" title="Manual refresh"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="vCC-RE-TlQ" firstAttribute="bottom" secondItem="pLs-Lj-2w6" secondAttribute="bottom" constant="100" id="2lb-Fq-hZU"/>
+                            <constraint firstItem="vCC-RE-TlQ" firstAttribute="bottom" secondItem="zEt-dQ-XQ6" secondAttribute="bottom" constant="30" id="4o5-Ki-lgr"/>
+                            <constraint firstItem="Tdx-hi-hyM" firstAttribute="centerX" secondItem="aHH-Xm-YCf" secondAttribute="centerX" id="K8v-HE-N3H"/>
+                            <constraint firstItem="vCC-RE-TlQ" firstAttribute="trailing" secondItem="pLs-Lj-2w6" secondAttribute="trailing" constant="30" id="apd-hq-tB8"/>
+                            <constraint firstItem="zEt-dQ-XQ6" firstAttribute="top" secondItem="Tdx-hi-hyM" secondAttribute="bottom" constant="20" id="lHQ-ld-72K"/>
+                            <constraint firstItem="Tdx-hi-hyM" firstAttribute="centerX" secondItem="aHH-Xm-YCf" secondAttribute="centerX" id="vte-tP-ecH"/>
+                            <constraint firstItem="zEt-dQ-XQ6" firstAttribute="centerX" secondItem="aHH-Xm-YCf" secondAttribute="centerX" id="y1g-dO-RYE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="vCC-RE-TlQ"/>
                     </view>
                     <connections>
@@ -64,8 +93,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aib-TG-w75" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="f5N-Q6-JW5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="842" y="35"/>
+            <point key="canvasLocation" x="840.79999999999995" y="34.632683658170919"/>
         </scene>
     </scenes>
 </document>

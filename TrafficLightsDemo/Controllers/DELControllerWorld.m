@@ -21,10 +21,12 @@
 
 - (void)stop {
     DebugLog(@"Timer invalidating...");
+    self.working = NO;
     [self.timer invalidate];
 }
 
 - (void)start {
+    self.working = YES;
     _lightService = [[DELLightService alloc] init];
     [self createDefaultLights];
     [self doUpdateView];
