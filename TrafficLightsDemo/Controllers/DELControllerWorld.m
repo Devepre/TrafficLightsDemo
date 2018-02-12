@@ -19,21 +19,26 @@
     return [self initWithTimeQuant:1];
 }
 
+- (void)stop {
+    DebugLog(@"Timer invalidating...");
+    [self.timer invalidate];
+}
+
 - (void)start {
     _lightService = [[DELLightService alloc] init];
     [self createDefaultLights];
     [self doUpdateView];
     
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:_timeQuant repeats:YES block:^(NSTimer * _Nonnull timer) {
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:_timeQuant repeats:YES block:^(NSTimer * _Nonnull timer) {
         for (DELLight *currentLight in self.lightsArray) {
             [_lightService recieveOneTickForLight:currentLight];
         }
     }];
-    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+    [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
 }
 
 - (void)createDefaultLights {
-    int q = 2;
+    int q = 1;
     
     //First Light
     DELLight *lightRoadOne = [_lightService createLightWithName:@"#1" andDelegate:self];
@@ -80,7 +85,7 @@
 }
 
 - (void)recieveLightChange:(DELLight *)lightChanged {
-//    DebugLog(@"changed object is: %@", lightChanged);
+//    DebugLog(@"changed object is: %@", [_lightService descriptionForLight:lightChanged]);
     [self doUpdateView];
 }
 
