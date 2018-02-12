@@ -64,6 +64,7 @@
 }
 
 - (void)blinkView:(UIView *)view withDuration:(double)duration {
+    [UIView beginAnimations:@"" context:nil];
     view.alpha = 0;
     [UIView animateWithDuration:duration
                           delay:0
@@ -72,6 +73,7 @@
                          view.alpha = 1.0;
                      }
                      completion:nil];
+    [UIView commitAnimations];
 }
 
 - (void)recieveWorldChange:(DELControllerWorldUI *)controllerWorldUI {
