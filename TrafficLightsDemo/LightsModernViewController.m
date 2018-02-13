@@ -40,7 +40,8 @@
     if (!self.areLightsAttached) {
         [self attachLights:controllerWorldUI.lightsArray];
     }
-    
+
+    [UIView beginAnimations:@"" context:nil];
     for (DELLight *currentLightModel in controllerWorldUI.lightsArray) {
         DELLightService *lightService = [[DELLightService alloc] init];
         DELLightState *currentLightState = [lightService getCurrentStateForLight:currentLightModel];
@@ -51,7 +52,7 @@
         
         [self checkInColors:currentLightColors for:currentLightUI];
     }
-    
+    [UIView commitAnimations];
 }
 
 - (void)attachLights:(NSMutableArray<DELLight *> *)lightsArray {
@@ -82,8 +83,7 @@
         [self.lightsHub addObject:lightView];
         
         [self.view addSubview:lightView];
-        NSLog(@"Creating Light view %@", lightView);
-        //        [self.view bringSubviewToFront:lightView];
+//        [self.view bringSubviewToFront:lightView];
         xCoord+= 100;
         i++;
     }
@@ -156,7 +156,6 @@
             currentColor = [[array objectAtIndex:i] unsignedIntegerValue];
             if (image.backgroundColor == [self getUIColorFrom:currentColor]) {
                 colorFound = YES;
-                NSLog(@"Color found: %@ %@", image, image.backgroundColor);
                 break;
             }
         }
@@ -167,7 +166,6 @@
 }
 
 - (void)turnViewOff:(UIView *)currentColorView {
-    printf("\nTurning view of: %s %s\n", [[currentColorView description] UTF8String], [[currentColorView.backgroundColor description] UTF8String]);
     [currentColorView.layer removeAllAnimations];
     currentColorView.alpha = .15;
 }
@@ -225,11 +223,10 @@
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self logTouches:touches withMethod:@"touchesBegan"];
+//    [self logTouches:touches withMethod:@"touchesBegan"];
     UITouch* touch = [touches anyObject];
     CGPoint pointOnMainView = [touch locationInView:self.view];
     UIView* view = [self.view hitTest:pointOnMainView withEvent:event];
-    NSLog(@"View to move is: %@", view);
     if (![view isEqual:self.view]) {
         self.draggingView = view;
         [self.view bringSubviewToFront:self.draggingView];
@@ -248,7 +245,7 @@
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-        [self logTouches:touches withMethod:@"touchesMoved"];
+//    [self logTouches:touches withMethod:@"touchesMoved"];
     if (self.draggingView) {
         UITouch* touch = [touches anyObject];
         CGPoint pointOnMainView = [touch locationInView:self.view];
@@ -269,12 +266,12 @@
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-        [self logTouches:touches withMethod:@"touchesEnded"];
+//    [self logTouches:touches withMethod:@"touchesEnded"];
     [self onTouchesEnded];
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-        [self logTouches:touches withMethod:@"touchesCancelled"];
+//    [self logTouches:touches withMethod:@"touchesCancelled"];
     [self onTouchesEnded];
 }
 
