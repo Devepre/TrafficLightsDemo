@@ -1,10 +1,10 @@
-#import "TestViewController.h"
+#import "LightsModernViewController.h"
 #import "DELLLightView.h"
 #import "DELControllerWorldUI.h"
 #import "DELLightUI.h"
 #import "DELLightService.h"
 
-@interface TestViewController ()
+@interface LightsModernViewController ()
 
 @property (strong, nonatomic) NSMutableArray<DELLLightView *> *lightsHub;
 @property (assign, nonatomic) BOOL areLightsAttached;
@@ -14,7 +14,7 @@
 
 @end
 
-@implementation TestViewController
+@implementation LightsModernViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

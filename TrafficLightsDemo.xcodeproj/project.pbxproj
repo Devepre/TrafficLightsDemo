@@ -13,7 +13,7 @@
 		CE44D166202B078500C4CC34 /* DELControllerWorldUI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE44D165202B078500C4CC34 /* DELControllerWorldUI.m */; };
 		CE44D16C202B4C2600C4CC34 /* DELLightUI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE44D16B202B4C2600C4CC34 /* DELLightUI.m */; };
 		CEDD054B2032DFC9006AC40D /* DELLLightView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDD054A2032DFC9006AC40D /* DELLLightView.m */; };
-		CEDD054E2032F518006AC40D /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDD054D2032F518006AC40D /* TestViewController.m */; };
+		CEDD054E2032F518006AC40D /* LightsModernViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDD054D2032F518006AC40D /* LightsModernViewController.m */; };
 		CEE64583202F26B700615B09 /* LightsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE64582202F26B700615B09 /* LightsViewController.m */; };
 		CEE6458B202F933300615B09 /* DELLightService.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE64589202F933300615B09 /* DELLightService.m */; };
 		CEFCAADF202AE9A500966EB5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFCAADE202AE9A500966EB5 /* AppDelegate.m */; };
@@ -59,8 +59,8 @@
 		CE44D16B202B4C2600C4CC34 /* DELLightUI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DELLightUI.m; sourceTree = "<group>"; };
 		CEDD05492032DFC8006AC40D /* DELLLightView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DELLLightView.h; sourceTree = "<group>"; };
 		CEDD054A2032DFC9006AC40D /* DELLLightView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DELLLightView.m; sourceTree = "<group>"; };
-		CEDD054C2032F518006AC40D /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
-		CEDD054D2032F518006AC40D /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		CEDD054C2032F518006AC40D /* LightsModernViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LightsModernViewController.h; sourceTree = "<group>"; };
+		CEDD054D2032F518006AC40D /* LightsModernViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LightsModernViewController.m; sourceTree = "<group>"; };
 		CEE64581202F26B700615B09 /* LightsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LightsViewController.h; sourceTree = "<group>"; };
 		CEE64582202F26B700615B09 /* LightsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LightsViewController.m; sourceTree = "<group>"; };
 		CEE64589202F933300615B09 /* DELLightService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DELLightService.m; sourceTree = "<group>"; };
@@ -168,8 +168,8 @@
 		CEFCAADC202AE9A500966EB5 /* TrafficLightsDemo */ = {
 			isa = PBXGroup;
 			children = (
-				CEDD054C2032F518006AC40D /* TestViewController.h */,
-				CEDD054D2032F518006AC40D /* TestViewController.m */,
+				CEDD054C2032F518006AC40D /* LightsModernViewController.h */,
+				CEDD054D2032F518006AC40D /* LightsModernViewController.m */,
 				CEFCAAE0202AE9A500966EB5 /* ViewController.h */,
 				CEFCAAE1202AE9A500966EB5 /* ViewController.m */,
 				CEE64581202F26B700615B09 /* LightsViewController.h */,
@@ -346,7 +346,7 @@
 				CE44D16C202B4C2600C4CC34 /* DELLightUI.m in Sources */,
 				CE44D15A202B043E00C4CC34 /* DELControllerWorld.m in Sources */,
 				CE44D15E202B044700C4CC34 /* DELLightState.m in Sources */,
-				CEDD054E2032F518006AC40D /* TestViewController.m in Sources */,
+				CEDD054E2032F518006AC40D /* LightsModernViewController.m in Sources */,
 				CEFCAAED202AE9A500966EB5 /* main.m in Sources */,
 				CEE64583202F26B700615B09 /* LightsViewController.m in Sources */,
 				CEDD054B2032DFC9006AC40D /* DELLLightView.m in Sources */,

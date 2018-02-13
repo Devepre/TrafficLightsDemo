@@ -57,10 +57,10 @@
             </objects>
             <point key="canvasLocation" x="28" y="34.632683658170919"/>
         </scene>
-        <!--Test View Controller-->
+        <!--Lights Modern View Controller-->
         <scene sceneID="fS2-oh-wyB">
             <objects>
-                <viewController id="BGD-5t-fpj" customClass="TestViewController" sceneMemberID="viewController">
+                <viewController id="BGD-5t-fpj" customClass="LightsModernViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="M9K-J2-PdB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
