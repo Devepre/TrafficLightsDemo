@@ -197,6 +197,7 @@
     return currentColor;
 }
 
+#pragma mark - buttons handling
 - (IBAction)stopViewLights:(UIButton *)sender {
     if (self.worldController.working) {
         [sender setTitle:@"Start" forState:UIControlStateNormal];
@@ -206,7 +207,6 @@
         [sender setTitle:@"Powe off" forState:UIControlStateNormal];
         [self startWorld];
     }
-    
     
 }
 
@@ -221,6 +221,8 @@
 -(IBAction)unwindToMainViewController:(UIStoryboardSegue *)segue {
     ;
 }
+
+#pragma mark - Touches
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 //    [self logTouches:touches withMethod:@"touchesBegan"];
