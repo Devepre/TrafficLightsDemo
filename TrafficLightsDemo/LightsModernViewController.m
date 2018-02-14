@@ -9,8 +9,6 @@
 @property (strong, nonatomic) NSMutableArray<DELLLightView *> *lightsHub;
 @property (assign, nonatomic) BOOL areLightsAttached;
 @property (strong, nonatomic) DELControllerWorldUI *worldController;
-@property (weak, nonatomic) UIView* draggingView;
-@property (assign, nonatomic) CGPoint touchOffset;
 
 @end
 
@@ -59,7 +57,6 @@
     double xCoord = 20;
     int i = 0;
     for (DELLight *currentLight in lightsArray) {
-        
         NSMutableArray<UIColor *> *colorsArray = [[NSMutableArray alloc] init];
         UIColor *currentColor = nil;
         NSArray<DELLightState *> *possible = currentLight.possibleLights;
@@ -83,6 +80,7 @@
         [self.lightsHub addObject:lightView];
         
         [self.view addSubview:lightView];
+        [self attachGesturesTo:lightView];
 //        [self.view bringSubviewToFront:lightView];
         xCoord+= 100;
         i++;
@@ -119,7 +117,6 @@
         
         if (!currentColorView) {
             currentColorView = [self findViewWithColor:enumColor inLight:currentLightUI];
-            //            currentColorView.hidden = !on;
             currentColorView.alpha = 1;
             
             if (blinking) {
@@ -222,78 +219,35 @@
     ;
 }
 
-#pragma mark - Touches
+#pragma mark - Touches & Gestures
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-//    [self logTouches:touches withMethod:@"touchesBegan"];
-    UITouch* touch = [touches anyObject];
-    CGPoint pointOnMainView = [touch locationInView:self.view];
-    UIView* view = [self.view hitTest:pointOnMainView withEvent:event];
-    if (![view isEqual:self.view]) {
-        self.draggingView = view;
-        [self.view bringSubviewToFront:self.draggingView];
-        CGPoint touchPoint = [touch locationInView:self.draggingView];
-        self.touchOffset = CGPointMake(CGRectGetMidX(self.draggingView.bounds) - touchPoint.x,
-                                       CGRectGetMidY(self.draggingView.bounds) - touchPoint.y);
-        //[self.draggingView.layer removeAllAnimations];
-        [UIView animateWithDuration:0.3
-                         animations:^{
-//                             self.draggingView.transform = CGAffineTransformMakeScale(1.2f, 1.2f);
-                             self.draggingView.alpha = 0.7f;
-                         }];
-    } else {
-        self.draggingView = nil;
-    }
-}
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-//    [self logTouches:touches withMethod:@"touchesMoved"];
-    if (self.draggingView) {
-        UITouch* touch = [touches anyObject];
-        CGPoint pointOnMainView = [touch locationInView:self.view];
-        CGPoint correction = CGPointMake(pointOnMainView.x + self.touchOffset.x,
-                                         pointOnMainView.y + self.touchOffset.y);
-        self.draggingView.center = correction;
-    }
+- (void)attachGesturesTo:(DELLLightView *)lightView {
+    UIRotationGestureRecognizer* rotationGesture =
+    [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(handleRotation:)];
+    rotationGesture.delegate = self;
+    [lightView addGestureRecognizer:rotationGesture];
     
+    UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    panGesture.delegate = self;
+    [lightView addGestureRecognizer:panGesture];
 }
 
-- (void) onTouchesEnded {
-    [UIView animateWithDuration:0.3
-                     animations:^{
-//                         self.draggingView.transform = CGAffineTransformIdentity;
-                         self.draggingView.alpha = 1.f;
-                     }];
-    self.draggingView = nil;
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-//    [self logTouches:touches withMethod:@"touchesEnded"];
-    [self onTouchesEnded];
-}
-
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-//    [self logTouches:touches withMethod:@"touchesCancelled"];
-    [self onTouchesEnded];
-}
-
-
-- (void) logTouches:(NSSet*)touches withMethod:(NSString*) methodName {
-    NSMutableString* string = [NSMutableString stringWithString:methodName];
-    for (UITouch* touch in touches) {
-        CGPoint point = [touch locationInView:self.view];
-        [string appendFormat:@" %@", NSStringFromCGPoint(point)];
+- (void)handlePan:(UIPanGestureRecognizer *)sender {
+    static CGPoint initialCenter;
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        initialCenter = sender.view.center;
     }
-    NSLog(@"%@", string);
+    CGPoint translation = [sender translationInView:sender.view.superview]; //superview is critical for Panning rotated objects!
+    sender.view.center = CGPointMake(initialCenter.x + translation.x, initialCenter.y + translation.y);
 }
 
-- (IBAction)startTestViewLights:(UIButton *)sender {
-    
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)handleRotation:(UIRotationGestureRecognizer *)sender {
+    static CGFloat initialRotation;
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        initialRotation = atan2f(sender.view.transform.b, sender.view.transform.a);
+    }
+    CGFloat newRotation = initialRotation + sender.rotation;
+    sender.view.transform = CGAffineTransformMakeRotation(newRotation);
 }
 
 /*
