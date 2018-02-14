@@ -47,16 +47,43 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XtN-je-s8G">
-                                <rect key="frame" x="154.5" y="607" width="66" height="30"/>
-                                <state key="normal" title="Power off"/>
+                                <rect key="frame" x="170.5" y="607" width="34" height="30"/>
+                                <state key="normal" title="Start"/>
                                 <connections>
                                     <action selector="stopStartViewLights:" destination="fbC-b3-XPj" eventType="touchUpInside" id="SuC-P6-fBA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gbh-rk-VWZ">
+                                <rect key="frame" x="130" y="502" width="115" height="30"/>
+                                <state key="normal" title="Add Light type C"/>
+                                <connections>
+                                    <action selector="addLightTypeC:" destination="fbC-b3-XPj" eventType="touchUpInside" id="dpO-ib-gXe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5XG-AR-198">
+                                <rect key="frame" x="130" y="572" width="115" height="30"/>
+                                <state key="normal" title="Add Light type A"/>
+                                <connections>
+                                    <action selector="addLightTypeA:" destination="fbC-b3-XPj" eventType="touchUpInside" id="sSx-Wv-Vh5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Np1-eE-5Xh">
+                                <rect key="frame" x="131" y="537" width="114" height="30"/>
+                                <state key="normal" title="Add Light type B"/>
+                                <connections>
+                                    <action selector="addLightTypeB:" destination="fbC-b3-XPj" eventType="touchUpInside" id="e6H-4A-CDr"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="5XG-AR-198" firstAttribute="centerX" secondItem="oCp-fG-mLb" secondAttribute="centerX" id="3JP-fr-pfc"/>
                             <constraint firstItem="Buj-mx-fII" firstAttribute="bottom" secondItem="XtN-je-s8G" secondAttribute="bottom" constant="30" id="AEQ-bj-tdJ"/>
+                            <constraint firstItem="Gbh-rk-VWZ" firstAttribute="centerX" secondItem="oCp-fG-mLb" secondAttribute="centerX" id="HhR-qQ-eJh"/>
+                            <constraint firstItem="Np1-eE-5Xh" firstAttribute="centerX" secondItem="oCp-fG-mLb" secondAttribute="centerX" id="Prk-6K-bf9"/>
+                            <constraint firstItem="5XG-AR-198" firstAttribute="top" secondItem="Np1-eE-5Xh" secondAttribute="bottom" constant="5" id="aJe-vm-fIG"/>
+                            <constraint firstItem="XtN-je-s8G" firstAttribute="top" secondItem="5XG-AR-198" secondAttribute="bottom" constant="5" id="g7b-Er-TDi"/>
+                            <constraint firstItem="Np1-eE-5Xh" firstAttribute="top" secondItem="Gbh-rk-VWZ" secondAttribute="bottom" constant="5" id="kEL-kG-voh"/>
                             <constraint firstItem="XtN-je-s8G" firstAttribute="centerX" secondItem="oCp-fG-mLb" secondAttribute="centerX" id="m4A-L6-kCv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Buj-mx-fII"/>

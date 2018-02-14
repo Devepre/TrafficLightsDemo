@@ -9,6 +9,8 @@
 @property (assign, nonatomic) BOOL areLightsAttached;
 @property (strong, nonatomic) DELControllerWorldUI *worldController;
 
+@property (assign, nonatomic) double defaultLightCordinateX;
+
 @end
 
 @implementation LightsModernViewController
@@ -17,19 +19,24 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    _areLightsAttached = NO;
+    _lightsHub = [[NSMutableArray alloc] init];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self startWorld];
+//    [self startWorld];
 }
 
 - (void)startWorld {
     //initializing block
-    _lightsHub = [[NSMutableArray alloc] init];
-    _areLightsAttached = NO;
-    _worldController = [[DELControllerWorldUI alloc] init];
+//    _lightsHub = [[NSMutableArray alloc] init];
+//    _areLightsAttached = NO;
+    if (!self.worldController) {
+        self.worldController = [[DELControllerWorldUI alloc] init];
+    }
     _worldController.delegate = self;
+    
     [self.worldController start];
 }
 
@@ -50,6 +57,15 @@
         [self checkInColors:currentLightColors for:currentLightUI];
     }
     [UIView commitAnimations];
+}
+
+- (void)createLightViewWith:(NSMutableArray<UIColor *> *)colorsArray xCoord:(double)xCoord {
+    CGRect rect = CGRectMake(xCoord, 100, 50, 50);
+    DELLLightView *lightView = [[DELLLightView alloc] initWithFrame:rect andColors:colorsArray];
+    [self.lightsHub addObject:lightView];
+    
+    [self.view addSubview:lightView];
+    [self attachGesturesTo:lightView];
 }
 
 - (void)attachLights:(NSMutableArray<DELLight *> *)lightsArray {
@@ -74,16 +90,34 @@
             [colorsArray addObject:currentColor];
         }
         
-        CGRect rect = CGRectMake(xCoord, 100, 50, 50);
-        DELLLightView *lightView = [[DELLLightView alloc] initWithFrame:rect andColors:colorsArray];
-        [self.lightsHub addObject:lightView];
-        
-        [self.view addSubview:lightView];
-        [self attachGesturesTo:lightView];
+        [self createLightViewWith:colorsArray xCoord:xCoord];
 //        [self.view bringSubviewToFront:lightView];
         xCoord+= 100;
         i++;
     }
+    self.areLightsAttached = YES;
+}
+
+- (void)attachOneLight:(DELLight *)lightToAttach {
+    NSMutableArray<UIColor *> *colorsArray = [[NSMutableArray alloc] init];
+    UIColor *currentColor = nil;
+    NSArray<DELLightState *> *possible = lightToAttach.possibleLights;
+    for (DELLightState *currentLightState in possible) {
+        LightColor currentLightColor = currentLightState.color;
+        if (currentLightColor & LightColorRed) {
+            currentColor = UIColor.redColor;
+        } else if (currentLightColor & LightColorYellow) {
+            currentColor = UIColor.yellowColor;
+        } else if (currentLightColor & LightColorLGreen) {
+            currentColor = UIColor.greenColor;
+        } else {
+            currentColor = UIColor.brownColor;
+        }
+        
+        [colorsArray addObject:currentColor];
+    }
+    
+    [self createLightViewWith:colorsArray xCoord:self.defaultLightCordinateX];
     self.areLightsAttached = YES;
 }
 
@@ -198,19 +232,53 @@
     if (self.worldController.working) {
         [sender setTitle:@"Start" forState:UIControlStateNormal];
         [self.worldController stop];
-        [self stopLights];
+        [self resetWorld];
     } else {
-        [sender setTitle:@"Power off" forState:UIControlStateNormal];
+        NSLog(@"Starting world button");
+        [sender setTitle:@"Reset" forState:UIControlStateNormal];
         [self startWorld];
     }
     
 }
 
-- (void)stopLights {
+- (void)resetWorld {
     for (DELLLightView *light in self.lightsHub) {
         for (UIView *view in light.lightStatesImages) {
             [view removeFromSuperview];
         }
+    }
+    self.worldController = nil;
+    self.areLightsAttached = NO;
+    self.lightsHub = [[NSMutableArray alloc] init];
+}
+
+- (BOOL)isWolrdReadyForAddingLight {
+    if (self.worldController.working) {
+        return NO;
+    } else if (!self.worldController) {
+        self.worldController = [[DELControllerWorldUI alloc] init];
+    }
+    return YES;
+}
+
+- (IBAction)addLightTypeA:(UIButton *)sender {
+    if ([self isWolrdReadyForAddingLight]) {
+        DELLight *newLight = [self.worldController addLightTypeA];
+        [self attachOneLight:newLight];
+    }
+}
+
+- (IBAction)addLightTypeB:(UIButton *)sender {
+    if ([self isWolrdReadyForAddingLight]) {
+        DELLight *newLight = [self.worldController addLightTypeB];
+        [self attachOneLight:newLight];
+    }
+}
+
+- (IBAction)addLightTypeC:(UIButton *)sender {
+    if ([self isWolrdReadyForAddingLight]) {
+        DELLight *newLight = [self.worldController addLightTypeC];
+        [self attachOneLight:newLight];
     }
 }
 
