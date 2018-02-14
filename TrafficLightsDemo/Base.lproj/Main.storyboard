@@ -18,9 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ipE-EK-AP3">
-                                <rect key="frame" x="149" y="231" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ipE-EK-AP3">
+                                <rect key="frame" x="170.5" y="318.5" width="34" height="30"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
                                     <segue destination="fbC-b3-XPj" kind="show" id="Zdh-Ke-F8A"/>
@@ -28,6 +27,10 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ipE-EK-AP3" firstAttribute="centerX" secondItem="rqG-DF-lEM" secondAttribute="centerX" id="4PK-gd-IJV"/>
+                            <constraint firstItem="ipE-EK-AP3" firstAttribute="centerY" secondItem="rqG-DF-lEM" secondAttribute="centerY" id="OMD-zR-RAy"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="R54-Bu-lBw"/>
                     </view>
                 </viewController>
@@ -43,9 +46,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XtN-je-s8G">
-                                <rect key="frame" x="151" y="594" width="84" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XtN-je-s8G">
+                                <rect key="frame" x="154.5" y="607" width="66" height="30"/>
                                 <state key="normal" title="Power off"/>
                                 <connections>
                                     <action selector="stopStartViewLights:" destination="fbC-b3-XPj" eventType="touchUpInside" id="SuC-P6-fBA"/>
@@ -53,6 +55,10 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Buj-mx-fII" firstAttribute="bottom" secondItem="XtN-je-s8G" secondAttribute="bottom" constant="30" id="AEQ-bj-tdJ"/>
+                            <constraint firstItem="XtN-je-s8G" firstAttribute="centerX" secondItem="oCp-fG-mLb" secondAttribute="centerX" id="m4A-L6-kCv"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Buj-mx-fII"/>
                     </view>
                 </viewController>
