@@ -13,5 +13,8 @@
 - (void)start;
 - (void)stop;
 - (void)doUpdateView;
+- (DELLight *)addLightTypeA;
+- (DELLight *)addLightTypeB;
+- (DELLight *)addLightTypeC;
 
 @end
