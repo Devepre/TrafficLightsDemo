@@ -1,7 +1,6 @@
 #import "LightsModernViewController.h"
 #import "DELLLightView.h"
 #import "DELControllerWorldUI.h"
-#import "DELLightUI.h"
 #import "DELLightService.h"
 
 @interface LightsModernViewController ()
@@ -195,28 +194,24 @@
 }
 
 #pragma mark - buttons handling
-- (IBAction)stopViewLights:(UIButton *)sender {
+- (IBAction)stopStartViewLights:(UIButton *)sender {
     if (self.worldController.working) {
         [sender setTitle:@"Start" forState:UIControlStateNormal];
         [self.worldController stop];
         [self stopLights];
     } else {
-        [sender setTitle:@"Powe off" forState:UIControlStateNormal];
+        [sender setTitle:@"Power off" forState:UIControlStateNormal];
         [self startWorld];
     }
     
 }
 
 - (void)stopLights {
-    for (DELLightUI *light in self.lightsHub) {
+    for (DELLLightView *light in self.lightsHub) {
         for (UIView *view in light.lightStatesImages) {
-            [self turnViewOff:view];
+            [view removeFromSuperview];
         }
     }
-}
-
--(IBAction)unwindToMainViewController:(UIStoryboardSegue *)segue {
-    ;
 }
 
 #pragma mark - Touches & Gestures
