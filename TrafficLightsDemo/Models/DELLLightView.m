@@ -37,6 +37,9 @@
     [self.layer addSublayer:externalBorder];
     self.layer.masksToBounds = NO;
     
+    self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    self.translatesAutoresizingMaskIntoConstraints = true;
+    
 }
 
 - (UIImageView *)createLightViewWithColor:(UIColor *)color andCoordX:(CGFloat)coordX andCoordY:(CGFloat)coordY andWidth:(CGFloat)width andHeight:(CGFloat)height  {
