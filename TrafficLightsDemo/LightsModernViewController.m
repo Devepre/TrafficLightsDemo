@@ -217,6 +217,15 @@
 }
 
 - (void)resetWorld {
+    UIAlertController* alert = [UIAlertController
+                                alertControllerWithTitle:NSLocalizedString(@"AttentionCaption", @"header for attention alert message reseting the World")
+                                message:NSLocalizedString(@"AttentionMessageBody", @"message body for attention reseting the World")
+                                preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+    
     for (DELLLightView *light in self.lightsHub) {
         [light removeFromSuperview];
     }

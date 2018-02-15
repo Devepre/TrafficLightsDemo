@@ -1,15 +1,15 @@
 
 /* Class = "UIButton"; normalTitle = "Add Light type A"; ObjectID = "5XG-AR-198"; */
-"5XG-AR-198.normalTitle" = "Add Light type A";
+"5XG-AR-198.normalTitle" = "Додати світлофор типу A";
 
 /* Class = "UIButton"; normalTitle = "Add Light type C"; ObjectID = "Gbh-rk-VWZ"; */
-"Gbh-rk-VWZ.normalTitle" = "Add Light type C";
+"Gbh-rk-VWZ.normalTitle" = "Додати світлофор типу C";
 
 /* Class = "UIButton"; normalTitle = "Add Light type B"; ObjectID = "Np1-eE-5Xh"; */
-"Np1-eE-5Xh.normalTitle" = "Add Light type B";
+"Np1-eE-5Xh.normalTitle" = "Додати світлофор типу B";
 
 /* Class = "UIButton"; normalTitle = "Start"; ObjectID = "XtN-je-s8G"; */
-"XtN-je-s8G.normalTitle" = "Start";
+"XtN-je-s8G.normalTitle" = "Старт";
 
 /* Class = "UIButton"; normalTitle = "Start"; ObjectID = "ipE-EK-AP3"; */
-"ipE-EK-AP3.normalTitle" = "Start";
+"ipE-EK-AP3.normalTitle" = "Старт";
