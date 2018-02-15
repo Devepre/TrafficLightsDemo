@@ -14,6 +14,8 @@
 		CEDD054B2032DFC9006AC40D /* DELLLightView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDD054A2032DFC9006AC40D /* DELLLightView.m */; };
 		CEDD054E2032F518006AC40D /* LightsModernViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDD054D2032F518006AC40D /* LightsModernViewController.m */; };
 		CEE6458B202F933300615B09 /* DELLightService.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE64589202F933300615B09 /* DELLightService.m */; };
+		CEFA24AE203484B400FD8B17 /* crossroad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEFA24AD203484B400FD8B17 /* crossroad.jpg */; };
+		CEFA24B0203580CA00FD8B17 /* crossroad_done.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEFA24AF203580CA00FD8B17 /* crossroad_done.jpg */; };
 		CEFCAADF202AE9A500966EB5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFCAADE202AE9A500966EB5 /* AppDelegate.m */; };
 		CEFCAAE2202AE9A500966EB5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFCAAE1202AE9A500966EB5 /* ViewController.m */; };
 		CEFCAAE5202AE9A500966EB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEFCAAE3202AE9A500966EB5 /* Main.storyboard */; };
@@ -59,6 +61,8 @@
 		CEDD054D2032F518006AC40D /* LightsModernViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LightsModernViewController.m; sourceTree = "<group>"; };
 		CEE64589202F933300615B09 /* DELLightService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DELLightService.m; sourceTree = "<group>"; };
 		CEE6458A202F933300615B09 /* DELLightService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DELLightService.h; sourceTree = "<group>"; };
+		CEFA24AD203484B400FD8B17 /* crossroad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = crossroad.jpg; sourceTree = "<group>"; };
+		CEFA24AF203580CA00FD8B17 /* crossroad_done.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = crossroad_done.jpg; sourceTree = "<group>"; };
 		CEFCAADA202AE9A500966EB5 /* TrafficLightsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrafficLightsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEFCAADD202AE9A500966EB5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CEFCAADE202AE9A500966EB5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -137,6 +141,15 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		CEFA24AC203484B400FD8B17 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CEFA24AD203484B400FD8B17 /* crossroad.jpg */,
+				CEFA24AF203580CA00FD8B17 /* crossroad_done.jpg */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		CEFCAAD1202AE9A500966EB5 = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +173,7 @@
 		CEFCAADC202AE9A500966EB5 /* TrafficLightsDemo */ = {
 			isa = PBXGroup;
 			children = (
+				CEFA24AC203484B400FD8B17 /* Resources */,
 				CEDD054C2032F518006AC40D /* LightsModernViewController.h */,
 				CEDD054D2032F518006AC40D /* LightsModernViewController.m */,
 				CEFCAAE0202AE9A500966EB5 /* ViewController.h */,
@@ -303,7 +317,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEFA24AE203484B400FD8B17 /* crossroad.jpg in Resources */,
 				CEFCAAEA202AE9A500966EB5 /* LaunchScreen.storyboard in Resources */,
+				CEFA24B0203580CA00FD8B17 /* crossroad_done.jpg in Resources */,
 				CEFCAAE7202AE9A500966EB5 /* Assets.xcassets in Resources */,
 				CEFCAAE5202AE9A500966EB5 /* Main.storyboard in Resources */,
 			);

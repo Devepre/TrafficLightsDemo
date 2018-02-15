@@ -10,41 +10,59 @@
 @property (strong, nonatomic) DELControllerWorldUI *worldController;
 
 @property (assign, nonatomic) double defaultLightCordinateX;
+@property (assign, nonatomic) double defaultLightCordinateY;
+@property (assign, nonatomic) double defaultLightStateWidthHeight;
+@property (assign, nonatomic) double lightStateAlpha;
+@property (assign, nonatomic) double blinkDuration;
 
 @end
 
 @implementation LightsModernViewController
 
+- (void)addBackgroundImage {
+    UIImage *backgroundImage = [UIImage imageNamed:@"crossroad_done.jpg"];
+    UIImageView *backgroundView = [[UIImageView alloc]initWithImage:backgroundImage];
+    CGRect frame = backgroundView.frame;
+    float imgFactor = frame.size.height / frame.size.width;
+    frame.size.width = frame.size.height * imgFactor;
+    frame.size.height = [[UIScreen mainScreen] bounds].size.height;
+    backgroundView.frame = frame;
+    backgroundView.layer.zPosition = -5;
+    [self.view addSubview:backgroundView];
+}
+
+- (void)initValues {
+    self.defaultLightCordinateX = self.view.frame.size.width / 2;
+    self.defaultLightCordinateY = self.view.frame.size.height / 2;
+    self.defaultLightStateWidthHeight = 50.f;
+    self.lightStateAlpha = .05f;
+    self.blinkDuration = .2f;
+    
+    self.areLightsAttached = NO;
+    self.lightsHub = [[NSMutableArray alloc] init];
+    [self addBackgroundImage];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _areLightsAttached = NO;
-    _lightsHub = [[NSMutableArray alloc] init];
+    [self initValues];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    [self startWorld];
 }
 
 - (void)startWorld {
-    //initializing block
-//    _lightsHub = [[NSMutableArray alloc] init];
-//    _areLightsAttached = NO;
     if (!self.worldController) {
         self.worldController = [[DELControllerWorldUI alloc] init];
     }
     _worldController.delegate = self;
-    
     [self.worldController start];
 }
 
 - (void)recieveWorldChange:(DELControllerWorldUI *)controllerWorldUI {
-    if (!self.areLightsAttached) {
-        [self attachLights:controllerWorldUI.lightsArray];
-    }
-
     [UIView beginAnimations:@"" context:nil];
     for (DELLight *currentLightModel in controllerWorldUI.lightsArray) {
         DELLightService *lightService = [[DELLightService alloc] init];
@@ -59,43 +77,13 @@
     [UIView commitAnimations];
 }
 
-- (void)createLightViewWith:(NSMutableArray<UIColor *> *)colorsArray xCoord:(double)xCoord {
-    CGRect rect = CGRectMake(xCoord, 100, 50, 50);
+- (void)createLightViewWith:(NSMutableArray<UIColor *> *)colorsArray xCoord:(double)xCoord yCoord:(double)yCoord andWidth:(double)width {
+    CGRect rect = CGRectMake(xCoord, yCoord, width, width);
     DELLLightView *lightView = [[DELLLightView alloc] initWithFrame:rect andColors:colorsArray];
     [self.lightsHub addObject:lightView];
     
     [self.view addSubview:lightView];
     [self attachGesturesTo:lightView];
-}
-
-- (void)attachLights:(NSMutableArray<DELLight *> *)lightsArray {
-    double xCoord = 20;
-    int i = 0;
-    for (DELLight *currentLight in lightsArray) {
-        NSMutableArray<UIColor *> *colorsArray = [[NSMutableArray alloc] init];
-        UIColor *currentColor = nil;
-        NSArray<DELLightState *> *possible = currentLight.possibleLights;
-        for (DELLightState *currentLightState in possible) {
-            LightColor currentLightColor = currentLightState.color;
-            if (currentLightColor & LightColorRed) {
-                currentColor = UIColor.redColor;
-            } else if (currentLightColor & LightColorYellow) {
-                currentColor = UIColor.yellowColor;
-            } else if (currentLightColor & LightColorLGreen) {
-                currentColor = UIColor.greenColor;
-            } else {
-                currentColor = UIColor.brownColor;
-            }
-            
-            [colorsArray addObject:currentColor];
-        }
-        
-        [self createLightViewWith:colorsArray xCoord:xCoord];
-//        [self.view bringSubviewToFront:lightView];
-        xCoord+= 100;
-        i++;
-    }
-    self.areLightsAttached = YES;
 }
 
 - (void)attachOneLight:(DELLight *)lightToAttach {
@@ -117,7 +105,7 @@
         [colorsArray addObject:currentColor];
     }
     
-    [self createLightViewWith:colorsArray xCoord:self.defaultLightCordinateX];
+    [self createLightViewWith:colorsArray xCoord:self.defaultLightCordinateX yCoord:self.defaultLightCordinateY andWidth:self.defaultLightStateWidthHeight];
     self.areLightsAttached = YES;
 }
 
@@ -153,7 +141,7 @@
             currentColorView.alpha = 1;
             
             if (blinking) {
-                [self blinkView:currentColorView withDuration:0.2f];
+                [self blinkView:currentColorView withDuration:self.blinkDuration];
             } else if(off) {
                 [self turnViewOff:currentColorView];
             }
@@ -163,7 +151,7 @@
 }
 
 - (void)blinkView:(UIView *)view withDuration:(double)duration {
-    view.alpha = 0.15;
+    view.alpha = self.lightStateAlpha;
     [UIView animateWithDuration:duration
                           delay:0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse | UIViewAnimationOptionAllowUserInteraction
@@ -197,7 +185,7 @@
 
 - (void)turnViewOff:(UIView *)currentColorView {
     [currentColorView.layer removeAllAnimations];
-    currentColorView.alpha = .15;
+    currentColorView.alpha = self.lightStateAlpha;
 }
 
 - (UIView *)findViewWithColor:(LightColor)enumColor inLight:(DELLLightView *)currentLightUI {
@@ -243,9 +231,7 @@
 
 - (void)resetWorld {
     for (DELLLightView *light in self.lightsHub) {
-        for (UIView *view in light.lightStatesImages) {
-            [view removeFromSuperview];
-        }
+        [light removeFromSuperview];
     }
     self.worldController = nil;
     self.areLightsAttached = NO;
@@ -285,14 +271,18 @@
 #pragma mark - Touches & Gestures
 
 - (void)attachGesturesTo:(DELLLightView *)lightView {
-    UIRotationGestureRecognizer* rotationGesture =
+    UIRotationGestureRecognizer *rotationGesture =
     [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(handleRotation:)];
     rotationGesture.delegate = self;
     [lightView addGestureRecognizer:rotationGesture];
     
-    UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
     panGesture.delegate = self;
     [lightView addGestureRecognizer:panGesture];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
+    tapGesture.numberOfTapsRequired = 2;
+    [lightView addGestureRecognizer:tapGesture];
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)sender {
@@ -311,6 +301,15 @@
     }
     CGFloat newRotation = initialRotation + sender.rotation;
     sender.view.transform = CGAffineTransformMakeRotation(newRotation);
+}
+
+- (void)handleTapGesture:(UIRotationGestureRecognizer *)sender {
+    [UIView beginAnimations:@"" context:nil];
+    float rotationAngle = M_PI / 2;
+    rotationAngle+= sender.view.tag * M_PI / 2;
+    sender.view.tag++;
+    sender.view.transform = CGAffineTransformMakeRotation(rotationAngle);
+    [UIView commitAnimations];
 }
 
 /*
