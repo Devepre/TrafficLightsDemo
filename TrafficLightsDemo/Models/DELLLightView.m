@@ -11,7 +11,7 @@
         self.lightStatesImages =[[NSMutableArray<UIImageView *> alloc] init];
         CGPoint point = frame.origin;
         [self createSubViewsWithStartXcoord:point.x andStartYcoord:point.y andWidth:frame.size.width andColors:colors];
-        self.backgroundColor = UIColor.clearColor;
+        self.backgroundColor = UIColor.blackColor;
     }
     return self;
 }
@@ -20,57 +20,37 @@
     if (self) {
         CGFloat currentX = 0;
         CGFloat currentY = 0;
-        
-        //    DELLightUI *lightUI = [[DELLightUI alloc] init];
-        //    NSMutableArray<UIImageView *> *images = [[NSMutableArray alloc] init];
-        
         for (UIColor *currentColor in colors) {
             UIImageView *imageViewCurrent = [self createLightViewWithColor:currentColor andCoordX:currentX andCoordY:currentY andWidth:width andHeight:width];
-            
-            //        [lightUI.lightStatesImages addObject:imageViewCurrent];
-            //        [images addObject:imageViewCurrent];
             [self.lightStatesImages addObject:imageViewCurrent];
-            
             [self addSubview:imageViewCurrent];
             currentY+= width;
         }
-        
-        //    [lightUI setLightStatesImages:images];
-        //    [self.lightsHub addObject:lightUI];
     }
+
+    float border = 3;
+    CALayer * externalBorder = [CALayer layer];
+    externalBorder.frame = CGRectMake(-border, -border, self.frame.size.width + border * 2, self.frame.size.height + border * 2);
+    externalBorder.borderColor = UIColor.lightGrayColor.CGColor;
+    externalBorder.borderWidth = border;
+
+    [self.layer addSublayer:externalBorder];
+    self.layer.masksToBounds = NO;
+    
 }
 
 - (UIImageView *)createLightViewWithColor:(UIColor *)color andCoordX:(CGFloat)coordX andCoordY:(CGFloat)coordY andWidth:(CGFloat)width andHeight:(CGFloat)height  {
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(coordX, coordY, width, height)];
     imageView.backgroundColor = color;
-//    [self turnViewOff:imageView];
     
+    //round corners
     imageView.layer.cornerRadius = width / 2;
     imageView.clipsToBounds = YES;
+    imageView.layer.borderColor = [UIColor blackColor].CGColor;
+    imageView.layer.borderWidth = 1;
     
     return imageView;
 }
-
-#pragma mark - Object manipulating
-
-//- (void)blinkView:(UIView *)view withDuration:(double)duration {
-//    NSLog(@"BLINKING INSIDE");
-//    view.alpha = 0.15;
-//    [UIView animateWithDuration:duration
-//                          delay:0
-//                        options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse | UIViewAnimationOptionAllowUserInteraction
-//                     animations:^{
-//                         view.alpha = 1.0;
-//                     }
-//                     completion:nil];
-//}
-//
-//- (void)turnViewOff:(UIView *)currentColorView {
-//    printf("LOL_Turning view of: %s %s\n", [[currentColorView description] UTF8String], [[currentColorView.backgroundColor description] UTF8String]);
-//    [currentColorView.layer removeAllAnimations];
-//    currentColorView.alpha = .15;
-//}
-
 
 /*
  // Only override drawRect: if you perform custom drawing.
