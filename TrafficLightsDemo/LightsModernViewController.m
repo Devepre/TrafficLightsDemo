@@ -19,18 +19,6 @@
 
 @implementation LightsModernViewController
 
-- (void)addBackgroundImage {
-    UIImage *backgroundImage = [UIImage imageNamed:@"crossroad_done.jpg"];
-    UIImageView *backgroundView = [[UIImageView alloc]initWithImage:backgroundImage];
-    CGRect frame = backgroundView.frame;
-    float imgFactor = frame.size.height / frame.size.width;
-    frame.size.width = frame.size.height * imgFactor;
-    frame.size.height = [[UIScreen mainScreen] bounds].size.height;
-    backgroundView.frame = frame;
-    backgroundView.layer.zPosition = -5;
-    [self.view addSubview:backgroundView];
-}
-
 - (void)initValues {
     self.defaultLightCordinateX = self.view.frame.size.width / 2;
     self.defaultLightCordinateY = self.view.frame.size.height / 2;
@@ -40,7 +28,6 @@
     
     self.areLightsAttached = NO;
     self.lightsHub = [[NSMutableArray alloc] init];
-    [self addBackgroundImage];
 }
 
 - (void)viewDidLoad {
@@ -305,7 +292,7 @@
 
 - (void)handleTapGesture:(UIRotationGestureRecognizer *)sender {
     [UIView beginAnimations:@"" context:nil];
-    float rotationAngle = M_PI / 2;
+    float rotationAngle = -M_PI / 2;
     rotationAngle+= sender.view.tag * M_PI / 2;
     sender.view.tag++;
     sender.view.transform = CGAffineTransformMakeRotation(rotationAngle);

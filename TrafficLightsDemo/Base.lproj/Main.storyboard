@@ -46,6 +46,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crossroad_done.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Zme-lK-cIO">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XtN-je-s8G">
                                 <rect key="frame" x="30" y="607" width="34" height="30"/>
                                 <state key="normal" title="Start"/>
@@ -77,14 +80,18 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Gbh-rk-VWZ" firstAttribute="leading" secondItem="Buj-mx-fII" secondAttribute="leading" constant="30" id="28U-Rj-veQ"/>
-                            <constraint firstItem="Buj-mx-fII" firstAttribute="bottom" secondItem="XtN-je-s8G" secondAttribute="bottom" constant="30" id="AEQ-bj-tdJ"/>
-                            <constraint firstItem="5XG-AR-198" firstAttribute="leading" secondItem="Buj-mx-fII" secondAttribute="leading" constant="30" id="Kqv-DA-pL3"/>
-                            <constraint firstItem="Np1-eE-5Xh" firstAttribute="leading" secondItem="Buj-mx-fII" secondAttribute="leading" constant="30" id="SaO-EQ-HLx"/>
-                            <constraint firstItem="XtN-je-s8G" firstAttribute="leading" secondItem="Buj-mx-fII" secondAttribute="leading" constant="30" id="XkS-1y-YCO"/>
-                            <constraint firstItem="5XG-AR-198" firstAttribute="top" secondItem="Np1-eE-5Xh" secondAttribute="bottom" constant="5" id="aJe-vm-fIG"/>
-                            <constraint firstItem="XtN-je-s8G" firstAttribute="top" secondItem="5XG-AR-198" secondAttribute="bottom" constant="5" id="g7b-Er-TDi"/>
-                            <constraint firstItem="Np1-eE-5Xh" firstAttribute="top" secondItem="Gbh-rk-VWZ" secondAttribute="bottom" constant="5" id="kEL-kG-voh"/>
+                            <constraint firstItem="Gbh-rk-VWZ" firstAttribute="leading" secondItem="Buj-mx-fII" secondAttribute="leading" constant="30" id="28U-Rj-veQ" userLabel="Add Light type C.leading = Safe Area.leading + 20"/>
+                            <constraint firstItem="Buj-mx-fII" firstAttribute="bottom" secondItem="XtN-je-s8G" secondAttribute="bottom" constant="30" id="AEQ-bj-tdJ" userLabel="Safe Area.bottom = Start.bottom + 20"/>
+                            <constraint firstItem="Zme-lK-cIO" firstAttribute="trailing" secondItem="Buj-mx-fII" secondAttribute="trailing" id="HgZ-UC-6kL"/>
+                            <constraint firstItem="5XG-AR-198" firstAttribute="leading" secondItem="Buj-mx-fII" secondAttribute="leading" constant="30" id="Kqv-DA-pL3" userLabel="Add Light type A.leading = Safe Area.leading + 20"/>
+                            <constraint firstItem="Np1-eE-5Xh" firstAttribute="leading" secondItem="Buj-mx-fII" secondAttribute="leading" constant="30" id="SaO-EQ-HLx" userLabel="Add Light type B.leading = Safe Area.leading + 20"/>
+                            <constraint firstItem="Zme-lK-cIO" firstAttribute="leading" secondItem="Buj-mx-fII" secondAttribute="leading" id="WGY-Im-Zlh"/>
+                            <constraint firstItem="XtN-je-s8G" firstAttribute="leading" secondItem="Buj-mx-fII" secondAttribute="leading" constant="30" id="XkS-1y-YCO" userLabel="Start.leading = Safe Area.leading + 20"/>
+                            <constraint firstItem="5XG-AR-198" firstAttribute="top" secondItem="Np1-eE-5Xh" secondAttribute="bottom" constant="5" id="aJe-vm-fIG" userLabel="Add Light type A.top = Add Light type B.bottom + 4"/>
+                            <constraint firstItem="XtN-je-s8G" firstAttribute="top" secondItem="5XG-AR-198" secondAttribute="bottom" constant="5" id="g7b-Er-TDi" userLabel="Start.top = Add Light type A.bottom + 4"/>
+                            <constraint firstItem="Np1-eE-5Xh" firstAttribute="top" secondItem="Gbh-rk-VWZ" secondAttribute="bottom" constant="5" id="kEL-kG-voh" userLabel="Add Light type B.top = Add Light type C.bottom + 4"/>
+                            <constraint firstItem="Zme-lK-cIO" firstAttribute="top" secondItem="oCp-fG-mLb" secondAttribute="top" id="x0K-HG-jZ6"/>
+                            <constraint firstItem="Zme-lK-cIO" firstAttribute="bottom" secondItem="Buj-mx-fII" secondAttribute="bottom" id="z9N-Xe-bFJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Buj-mx-fII"/>
                     </view>
@@ -94,4 +101,7 @@
             <point key="canvasLocation" x="749.60000000000002" y="-144.3778110944528"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="crossroad_done.jpg" width="1300" height="1300"/>
+    </resources>
 </document>
