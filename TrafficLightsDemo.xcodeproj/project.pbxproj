@@ -17,6 +17,7 @@
 		CEFA24AE203484B400FD8B17 /* crossroad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEFA24AD203484B400FD8B17 /* crossroad.jpg */; };
 		CEFA24B0203580CA00FD8B17 /* crossroad_done.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEFA24AF203580CA00FD8B17 /* crossroad_done.jpg */; };
 		CEFA24B72035E88C00FD8B17 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEFA24B52035E88C00FD8B17 /* Localizable.strings */; };
+		CEFA24BB2036D0B900FD8B17 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEFA24B92036D0B900FD8B17 /* InfoPlist.strings */; };
 		CEFCAADF202AE9A500966EB5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFCAADE202AE9A500966EB5 /* AppDelegate.m */; };
 		CEFCAAE2202AE9A500966EB5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFCAAE1202AE9A500966EB5 /* ViewController.m */; };
 		CEFCAAE5202AE9A500966EB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEFCAAE3202AE9A500966EB5 /* Main.storyboard */; };
@@ -69,6 +70,8 @@
 		CEFA24B42035DCC900FD8B17 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		CEFA24B62035E88C00FD8B17 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CEFA24B82035E89500FD8B17 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CEFA24BA2036D0B900FD8B17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CEFA24BC2036D12F00FD8B17 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CEFCAADA202AE9A500966EB5 /* TrafficLightsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrafficLightsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEFCAADD202AE9A500966EB5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CEFCAADE202AE9A500966EB5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -192,6 +195,7 @@
 				CEFCAADE202AE9A500966EB5 /* AppDelegate.m */,
 				CE44D160202B050900C4CC34 /* PrefixHeader.pch */,
 				CEFCAAEB202AE9A500966EB5 /* Info.plist */,
+				CEFA24B92036D0B900FD8B17 /* InfoPlist.strings */,
 				CEFCAAE3202AE9A500966EB5 /* Main.storyboard */,
 				CEFA24B52035E88C00FD8B17 /* Localizable.strings */,
 				CEFCAAE8202AE9A500966EB5 /* LaunchScreen.storyboard */,
@@ -326,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEFA24AE203484B400FD8B17 /* crossroad.jpg in Resources */,
+				CEFA24BB2036D0B900FD8B17 /* InfoPlist.strings in Resources */,
 				CEFA24B72035E88C00FD8B17 /* Localizable.strings in Resources */,
 				CEFCAAEA202AE9A500966EB5 /* LaunchScreen.storyboard in Resources */,
 				CEFA24B0203580CA00FD8B17 /* crossroad_done.jpg in Resources */,
@@ -407,6 +412,15 @@
 				CEFA24B82035E89500FD8B17 /* uk */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		CEFA24B92036D0B900FD8B17 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CEFA24BA2036D0B900FD8B17 /* Base */,
+				CEFA24BC2036D12F00FD8B17 /* uk */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		CEFCAAE3202AE9A500966EB5 /* Main.storyboard */ = {

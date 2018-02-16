@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  TrafficLightsDemo
+
+  Created by User on 2/16/18.
+  Copyright © 2018 DEL. All rights reserved.
+*/
+
+"CFBundleDisplayName" = "TrafficLightsDemo";
