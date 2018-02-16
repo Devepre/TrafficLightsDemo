@@ -2,6 +2,7 @@
 #import "DELLLightView.h"
 #import "DELControllerWorldUI.h"
 #import "DELLightService.h"
+#import "DELZombieFactory.h"
 
 @interface LightsModernViewController ()
 
@@ -39,6 +40,11 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    float scale = 1.7f;
+    [DELZombieFactory createStandingZombieAtView:self.view andX:1000 andY:300 andScale:scale];
+    [DELZombieFactory createAttackingZombieAtView:self.view andX:700 andY:300 andScale:scale];
+    [DELZombieFactory createMovingZombieAtView:self.view andX:500 andY:300 andScale:scale];
 }
 
 - (void)startWorld {
