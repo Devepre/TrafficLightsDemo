@@ -100,4 +100,8 @@
     }
 }
 
+- (void)performHarakiri {
+    [self.zombieView removeFromSuperview];
+}
+
 @end

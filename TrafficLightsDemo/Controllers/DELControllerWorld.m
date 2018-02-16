@@ -1,6 +1,7 @@
 #import "DELControllerWorld.h"
 
 int q = 1;
+int nightModeLong = 10;
 
 @implementation DELControllerWorld {
     double _timeQuant;
@@ -59,7 +60,7 @@ int q = 1;
     [_lightService setToLight:lightRoadOne possibleLights:[[NSArray<DELLightState *> alloc]initWithObjects:[[DELLightState alloc] initWithInterval:0 andColor:LightColorRed], [[DELLightState alloc] initWithInterval:0 andColor:LightColorYellow], [[DELLightState alloc] initWithInterval:0 andColor:LightColorLGreen], nil]];
     
     //Night mode
-    [_lightService setNightStateToLight:lightRoadOne withInterval:3 andLightStateColor:LightColorYellow | LightColorBlinking];
+    [_lightService setNightStateToLight:lightRoadOne withInterval:nightModeLong andLightStateColor:LightColorYellow | LightColorBlinking];
     [_lightService setNightMode:YES forLight:lightRoadOne];
     
     [[self lightsArray] addObject:lightRoadOne];
@@ -78,7 +79,7 @@ int q = 1;
     [_lightService setToLight:lightRoadTwo possibleLights:[[NSArray<DELLightState *> alloc]initWithObjects:[[DELLightState alloc] initWithInterval:0 andColor:LightColorRed], [[DELLightState alloc] initWithInterval:0 andColor:LightColorYellow], [[DELLightState alloc] initWithInterval:0 andColor:LightColorLGreen], nil]];
     
     //Night mode
-    [_lightService setNightStateToLight:lightRoadTwo withInterval:3 andLightStateColor:LightColorYellow | LightColorBlinking];
+    [_lightService setNightStateToLight:lightRoadTwo withInterval:nightModeLong andLightStateColor:LightColorYellow | LightColorBlinking];
     [_lightService setNightMode:YES forLight:lightRoadTwo];
     
     [[self lightsArray] addObject:lightRoadTwo];
@@ -96,7 +97,7 @@ int q = 1;
     [_lightService setToLight:lightPedestrianOne possibleLights:[[NSArray<DELLightState *> alloc]initWithObjects:[[DELLightState alloc] initWithInterval:0 andColor:LightColorRed], [[DELLightState alloc] initWithInterval:0 andColor:LightColorLGreen], nil]];
     
     //Night mode
-    [_lightService setNightStateToLight:lightPedestrianOne withInterval:3 andLightStateColor:LightColorOff];
+    [_lightService setNightStateToLight:lightPedestrianOne withInterval:nightModeLong andLightStateColor:LightColorOff];
     [_lightService setNightMode:YES forLight:lightPedestrianOne];
     
     [[self lightsArray] addObject:lightPedestrianOne];

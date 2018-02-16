@@ -4,6 +4,9 @@
 #import "DELLightService.h"
 #import "DELZombieFactory.h"
 
+float __scale = 1.7f;
+BOOL zombiesCreated = NO;
+
 @interface LightsModernViewController ()
 
 @property (strong, nonatomic) NSMutableArray<DELLLightView *> *lightsHub;
@@ -41,10 +44,6 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    float scale = 1.7f;
-    [DELZombieFactory createStandingZombieAtView:self.view andX:1000 andY:300 andScale:scale];
-    [DELZombieFactory createAttackingZombieAtView:self.view andX:700 andY:300 andScale:scale];
-    [DELZombieFactory createMovingZombieAtView:self.view andX:500 andY:300 andScale:scale];
 }
 
 - (void)startWorld {
@@ -66,7 +65,25 @@
         DELLLightView *currentLightUI = [self.lightsHub objectAtIndex:idx];
         
         [self checkInColors:currentLightColors for:currentLightUI];
+        
+        int randomX = (arc4random() % (int)(self.view.frame.size.width / 2) ) + self.view.frame.size.width / 2;
+        int randomY = (arc4random() % (int)(self.view.frame.size.height / 8) - self.view.frame.size.width / 8);
+        if (!zombiesCreated) {
+            [DELZombieFactory createMovingZombieAtView:self.view
+                                                  andX:randomX
+                                                  andY:self.view.frame.size.height / 2 + randomY
+                                              andScale:__scale];
+            if ([currentLightModel nightMode] && [currentLightModel.possibleLights count] == 3) {
+                [DELZombieFactory createAttackingZombieAtView:self.view andX:currentLightUI.frame.origin.x + 20
+                                                         andY:currentLightUI.frame.origin.y + 10
+                                                     andScale:__scale];
+            }
+        }
+        if (![currentLightModel nightMode]) {
+            [DELZombieFactory destroyAllZombies];
+        }
     }
+    zombiesCreated = YES;
     [UIView commitAnimations];
 }
 
@@ -241,6 +258,7 @@
     self.worldController = nil;
     self.areLightsAttached = NO;
     self.lightsHub = [[NSMutableArray alloc] init];
+    zombiesCreated = NO;
 }
 
 - (BOOL)isWolrdReadyForAddingLight {
