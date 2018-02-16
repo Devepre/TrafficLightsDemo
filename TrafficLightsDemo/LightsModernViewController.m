@@ -204,13 +204,16 @@
 
 #pragma mark - buttons handling
 - (IBAction)stopStartViewLights:(UIButton *)sender {
+    NSString *captionForButton = nil;
     if (self.worldController.working) {
-        [sender setTitle:@"Start" forState:UIControlStateNormal];
+        captionForButton = NSLocalizedString(@"StartButtonTextStart", @"Start the World title");
+        [sender setTitle:captionForButton forState:UIControlStateNormal];
         [self.worldController stop];
         [self resetWorld];
     } else {
         NSLog(@"Starting world button");
-        [sender setTitle:@"Reset" forState:UIControlStateNormal];
+        captionForButton = NSLocalizedString(@"StartButtonTextReset", @"Reseting the World title");
+        [sender setTitle:captionForButton forState:UIControlStateNormal];
         [self startWorld];
     }
     
