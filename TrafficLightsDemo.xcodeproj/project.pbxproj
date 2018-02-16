@@ -18,6 +18,11 @@
 		CEFA24B0203580CA00FD8B17 /* crossroad_done.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEFA24AF203580CA00FD8B17 /* crossroad_done.jpg */; };
 		CEFA24B72035E88C00FD8B17 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEFA24B52035E88C00FD8B17 /* Localizable.strings */; };
 		CEFA24BB2036D0B900FD8B17 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEFA24B92036D0B900FD8B17 /* InfoPlist.strings */; };
+		CEFA24BF2036E66900FD8B17 /* DELZombie.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFA24BE2036E66900FD8B17 /* DELZombie.m */; };
+		CEFA24C32036F4D400FD8B17 /* zombie_attack_alpha.png in Resources */ = {isa = PBXBuildFile; fileRef = CEFA24C22036F4D400FD8B17 /* zombie_attack_alpha.png */; };
+		CEFA24C52036FC5800FD8B17 /* zombie_moving_alpha.png in Resources */ = {isa = PBXBuildFile; fileRef = CEFA24C42036FC5800FD8B17 /* zombie_moving_alpha.png */; };
+		CEFA24C720370BD200FD8B17 /* zombie_standing_alpha.png in Resources */ = {isa = PBXBuildFile; fileRef = CEFA24C620370BD200FD8B17 /* zombie_standing_alpha.png */; };
+		CEFA24CB203716A000FD8B17 /* DELZombieFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFA24CA203716A000FD8B17 /* DELZombieFactory.m */; };
 		CEFCAADF202AE9A500966EB5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFCAADE202AE9A500966EB5 /* AppDelegate.m */; };
 		CEFCAAE2202AE9A500966EB5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFCAAE1202AE9A500966EB5 /* ViewController.m */; };
 		CEFCAAE5202AE9A500966EB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEFCAAE3202AE9A500966EB5 /* Main.storyboard */; };
@@ -72,6 +77,13 @@
 		CEFA24B82035E89500FD8B17 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CEFA24BA2036D0B900FD8B17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CEFA24BC2036D12F00FD8B17 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CEFA24BD2036E66900FD8B17 /* DELZombie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DELZombie.h; sourceTree = "<group>"; };
+		CEFA24BE2036E66900FD8B17 /* DELZombie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DELZombie.m; sourceTree = "<group>"; };
+		CEFA24C22036F4D400FD8B17 /* zombie_attack_alpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zombie_attack_alpha.png; sourceTree = "<group>"; };
+		CEFA24C42036FC5800FD8B17 /* zombie_moving_alpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zombie_moving_alpha.png; sourceTree = "<group>"; };
+		CEFA24C620370BD200FD8B17 /* zombie_standing_alpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zombie_standing_alpha.png; sourceTree = "<group>"; };
+		CEFA24C9203716A000FD8B17 /* DELZombieFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DELZombieFactory.h; sourceTree = "<group>"; };
+		CEFA24CA203716A000FD8B17 /* DELZombieFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DELZombieFactory.m; sourceTree = "<group>"; };
 		CEFCAADA202AE9A500966EB5 /* TrafficLightsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrafficLightsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEFCAADD202AE9A500966EB5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CEFCAADE202AE9A500966EB5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -119,6 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				CEDD05492032DFC8006AC40D /* DELLLightView.h */,
+				CEFA24BD2036E66900FD8B17 /* DELZombie.h */,
+				CEFA24BE2036E66900FD8B17 /* DELZombie.m */,
 				CEDD054A2032DFC9006AC40D /* DELLLightView.m */,
 				CE44D158202B043E00C4CC34 /* DELLight.h */,
 				CE44D156202B043E00C4CC34 /* DELLight.m */,
@@ -144,6 +158,8 @@
 		CEE64588202F933300615B09 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				CEFA24C9203716A000FD8B17 /* DELZombieFactory.h */,
+				CEFA24CA203716A000FD8B17 /* DELZombieFactory.m */,
 				CEE6458A202F933300615B09 /* DELLightService.h */,
 				CEE64589202F933300615B09 /* DELLightService.m */,
 			);
@@ -155,8 +171,19 @@
 			children = (
 				CEFA24AD203484B400FD8B17 /* crossroad.jpg */,
 				CEFA24AF203580CA00FD8B17 /* crossroad_done.jpg */,
+				CEFA24C82037143D00FD8B17 /* zombies */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		CEFA24C82037143D00FD8B17 /* zombies */ = {
+			isa = PBXGroup;
+			children = (
+				CEFA24C22036F4D400FD8B17 /* zombie_attack_alpha.png */,
+				CEFA24C42036FC5800FD8B17 /* zombie_moving_alpha.png */,
+				CEFA24C620370BD200FD8B17 /* zombie_standing_alpha.png */,
+			);
+			path = zombies;
 			sourceTree = "<group>";
 		};
 		CEFCAAD1202AE9A500966EB5 = {
@@ -329,8 +356,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEFA24C52036FC5800FD8B17 /* zombie_moving_alpha.png in Resources */,
 				CEFA24AE203484B400FD8B17 /* crossroad.jpg in Resources */,
+				CEFA24C32036F4D400FD8B17 /* zombie_attack_alpha.png in Resources */,
 				CEFA24BB2036D0B900FD8B17 /* InfoPlist.strings in Resources */,
+				CEFA24C720370BD200FD8B17 /* zombie_standing_alpha.png in Resources */,
 				CEFA24B72035E88C00FD8B17 /* Localizable.strings in Resources */,
 				CEFCAAEA202AE9A500966EB5 /* LaunchScreen.storyboard in Resources */,
 				CEFA24B0203580CA00FD8B17 /* crossroad_done.jpg in Resources */,
@@ -360,9 +390,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEFA24BF2036E66900FD8B17 /* DELZombie.m in Sources */,
 				CEE6458B202F933300615B09 /* DELLightService.m in Sources */,
 				CE44D166202B078500C4CC34 /* DELControllerWorldUI.m in Sources */,
 				CEFCAAE2202AE9A500966EB5 /* ViewController.m in Sources */,
+				CEFA24CB203716A000FD8B17 /* DELZombieFactory.m in Sources */,
 				CE44D15A202B043E00C4CC34 /* DELControllerWorld.m in Sources */,
 				CE44D15E202B044700C4CC34 /* DELLightState.m in Sources */,
 				CEDD054E2032F518006AC40D /* LightsModernViewController.m in Sources */,
