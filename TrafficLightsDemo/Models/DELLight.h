@@ -8,7 +8,6 @@
 @property (assign, nonatomic, readonly) BOOL nightMode;
 @property (strong, nonatomic, readonly) DELLightState *nightLightState;
 @property (strong, nonatomic, readonly) NSArray<DELLightState *> *possibleLights;
-//@property (assign, nonatomic, readonly) LightColor *possibleLights;   //todo
 @property (strong, nonatomic, readonly) NSMutableArray<DELLightState *> *lightStates;
 @property (assign, nonatomic, readonly) NSUInteger currentStateNumber;
 @property (assign, nonatomic, readonly) NSUInteger currentTicks;

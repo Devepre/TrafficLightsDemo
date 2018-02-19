@@ -64,20 +64,10 @@
     
     self.zombieRect = CGRectMake(self.zombieStartX, self.zombieStartY, self.zombieWidth, self.zombieHeight);
     self.zombieView = [[UIImageView alloc] initWithFrame: self.zombieRect];
-    
-    //set the start image
     [self.zombieView setImage: [UIImage imageWithCGImage:imageRef]];
-    
-    //animate the image view with the zombie array of images
     self.zombieView.animationImages = zombieArray;
-    
-    //how often do we want to change the image? every 1/9rd of a second
     self.zombieView.animationDuration = 0.9;
-    
-    //add the animation to the Game's View
     [self.worldView addSubview: self.zombieView];
-    
-    //start the zombie's image animation
     [self.zombieView startAnimating];
     
     if (self.moving) {

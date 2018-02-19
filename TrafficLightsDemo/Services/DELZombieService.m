@@ -1,8 +1,8 @@
-#import "DELZombieFactory.h"
+#import "DELZombieService.h"
 
 NSMutableArray<DELZombie *> *__zombies;
 
-@implementation DELZombieFactory
+@implementation DELZombieService
 
 + (void)createAttackingZombieAtView:(UIView *)view andX:(int)startX andY:(int)startY andScale:(float)scale {
     NSString *zombieAttackImage = @"zombie_attack_alpha.png";

@@ -3,6 +3,6 @@
 
 @interface DELControllerWorldUI : DELControllerWorld
 
-@property (weak, nonatomic) id<DELControllerWorldUIDelegate> delegate;
+@property (weak, nonatomic) id <DELControllerWorldUIDelegate> delegate;
 
 @end

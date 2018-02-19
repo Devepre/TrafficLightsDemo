@@ -15,18 +15,7 @@
     [light setValue:lights forKey:@"possibleLights"];
 }
 
-//TODO
-//- (void)setToLight:(DELLight *)light possibleLights:(LightColor *)firstArg, ...{
-//    va_list args;
-//    va_start(args, firstArg);
-//    for (LightColor *arg = firstArg; arg != nil; arg = va_arg(args, LightColor*)) {
-//
-//    }
-//    va_end(args);
-//}
-
 - (void)recieveOneTickForLight:(DELLight *)light {
-//    DebugLog(@"calling: %s", __func__);
     [light setValue:[NSNumber numberWithUnsignedInteger:light.currentTicks + 1] forKey:@"currentTicks"];
     NSNumber *intervalNumber = [[light valueForKey:@"nightMode"] boolValue] ? [light.nightLightState interval] : [[[light lightStates] objectAtIndex:light.currentStateNumber] interval];
     if ([intervalNumber integerValue] == light.currentTicks) {

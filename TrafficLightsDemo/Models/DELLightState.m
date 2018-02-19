@@ -2,7 +2,6 @@
 
 @implementation DELLightState
 
-//designated initializer
 - (instancetype)initWithInterval:(NSNumber *)interval andColor:(LightColor)color {
     self = [super init];
     if (self) {

@@ -1,38 +1,27 @@
 #import "LightsModernViewController.h"
 #import "DELLLightView.h"
 #import "DELControllerWorldUI.h"
-#import "DELLightService.h"
-#import "DELZombieFactory.h"
+#import "DELZombieService.h"
 
-float __scale = 1.7f;
-BOOL zombiesCreated = NO;
+float __scaleForZombieImages = 1.7f;
+BOOL __areZombiesCreated = NO;
 
 @interface LightsModernViewController ()
 
-@property (strong, nonatomic) NSMutableArray<DELLLightView *> *lightsHub;
-@property (assign, nonatomic) BOOL areLightsAttached;
+@property (strong, nonatomic) NSMutableArray<DELLLightView *> *lightViewsArray;
+@property (assign, nonatomic) BOOL areLightViewsAttached;
 @property (strong, nonatomic) DELControllerWorldUI *worldController;
-
-@property (assign, nonatomic) double defaultLightCordinateX;
-@property (assign, nonatomic) double defaultLightCordinateY;
-@property (assign, nonatomic) double defaultLightStateWidthHeight;
-@property (assign, nonatomic) double lightStateAlpha;
-@property (assign, nonatomic) double blinkDuration;
+@property (assign, nonatomic) int countOfPossibleLightStates;
+@property (strong, nonatomic) DELLightService *lightService;
+@property (assign, nonatomic) double defaultLightViewCordinateX;
+@property (assign, nonatomic) double defaultLightViewCordinateY;
+@property (assign, nonatomic) double defaultLightViewStateWidthAndHeight;
+@property (assign, nonatomic) double lightViewStateAlpha;
+@property (assign, nonatomic) double lightViewBlinkDuration;
 
 @end
 
 @implementation LightsModernViewController
-
-- (void)initValues {
-    self.defaultLightCordinateX = self.view.frame.size.width / 2;
-    self.defaultLightCordinateY = self.view.frame.size.height / 2;
-    self.defaultLightStateWidthHeight = 50.f;
-    self.lightStateAlpha = .05f;
-    self.blinkDuration = .2f;
-    
-    self.areLightsAttached = NO;
-    self.lightsHub = [[NSMutableArray alloc] init];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,62 +30,74 @@ BOOL zombiesCreated = NO;
     [self initValues];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+- (void)initValues {
+    //default coordinates are approximately in a center of screen
+    self.defaultLightViewCordinateX = self.view.frame.size.width / 2;
+    self.defaultLightViewCordinateY = self.view.frame.size.height / 2;
+    self.defaultLightViewStateWidthAndHeight = 50.f;
+    self.lightViewStateAlpha = .05f;
+    self.lightViewBlinkDuration = .2f;
+    self.countOfPossibleLightStates = 6;
     
+    self.areLightViewsAttached = NO;
+    self.lightViewsArray = [[NSMutableArray alloc] init];
 }
 
 - (void)startWorld {
     if (!self.worldController) {
         self.worldController = [[DELControllerWorldUI alloc] init];
     }
-    _worldController.delegate = self;
+    self.worldController.delegate = self;
+    self.lightService = [[DELLightService alloc] init];
     [self.worldController start];
 }
 
 - (void)recieveWorldChange:(DELControllerWorldUI *)controllerWorldUI {
     [UIView beginAnimations:@"" context:nil];
     for (DELLight *currentLightModel in controllerWorldUI.lightsArray) {
-        DELLightService *lightService = [[DELLightService alloc] init];
-        DELLightState *currentLightState = [lightService getCurrentStateForLight:currentLightModel];
+        DELLightState *currentLightState = [self.lightService getCurrentStateForLight:currentLightModel];
         LightColor currentLightColors = currentLightState.color;
         
+        //get LightView item according to LightModel item index
         NSUInteger idx = [controllerWorldUI.lightsArray indexOfObject:currentLightModel];
-        DELLLightView *currentLightUI = [self.lightsHub objectAtIndex:idx];
+        DELLLightView *currentLightView = [self.lightViewsArray objectAtIndex:idx];
         
-        [self checkInColors:currentLightColors for:currentLightUI];
+        [self checkInColors:currentLightColors for:currentLightView];
         
+        //zombies fun
         int randomX = (arc4random() % (int)(self.view.frame.size.width / 2) ) + self.view.frame.size.width / 2;
         int randomY = (arc4random() % (int)(self.view.frame.size.height / 8) - self.view.frame.size.width / 8);
-        if (!zombiesCreated) {
-            [DELZombieFactory createMovingZombieAtView:self.view
+        if (!__areZombiesCreated) {
+            [DELZombieService createMovingZombieAtView:self.view
                                                   andX:randomX
                                                   andY:self.view.frame.size.height / 2 + randomY
-                                              andScale:__scale];
+                                              andScale:__scaleForZombieImages];
             if ([currentLightModel nightMode] && [currentLightModel.possibleLights count] == 3) {
-                [DELZombieFactory createAttackingZombieAtView:self.view andX:currentLightUI.frame.origin.x + 20
-                                                         andY:currentLightUI.frame.origin.y + 10
-                                                     andScale:__scale];
+                [DELZombieService createAttackingZombieAtView:self.view andX:currentLightView.frame.origin.x + 20
+                                                         andY:currentLightView.frame.origin.y + 10
+                                                     andScale:__scaleForZombieImages];
             }
         }
         if (![currentLightModel nightMode]) {
-            [DELZombieFactory destroyAllZombies];
+            [DELZombieService destroyAllZombies];
         }
     }
-    zombiesCreated = YES;
+    __areZombiesCreated = YES;
+     //end of zombies fun
+    
     [UIView commitAnimations];
 }
 
 - (void)createLightViewWith:(NSMutableArray<UIColor *> *)colorsArray xCoord:(double)xCoord yCoord:(double)yCoord andWidth:(double)width {
     CGRect rect = CGRectMake(xCoord, yCoord, width, width);
     DELLLightView *lightView = [[DELLLightView alloc] initWithFrame:rect andColors:colorsArray];
-    [self.lightsHub addObject:lightView];
+    [self.lightViewsArray addObject:lightView];
     
     [self.view addSubview:lightView];
-    [self attachGesturesTo:lightView];
+    [self attachGesturesToView:lightView];
 }
 
-- (void)attachOneLight:(DELLight *)lightToAttach {
+- (void)attachOneLightView:(DELLight *)lightToAttach {
     NSMutableArray<UIColor *> *colorsArray = [[NSMutableArray alloc] init];
     UIColor *currentColor = nil;
     NSArray<DELLightState *> *possible = lightToAttach.possibleLights;
@@ -115,29 +116,29 @@ BOOL zombiesCreated = NO;
         [colorsArray addObject:currentColor];
     }
     
-    [self createLightViewWith:colorsArray xCoord:self.defaultLightCordinateX yCoord:self.defaultLightCordinateY andWidth:self.defaultLightStateWidthHeight];
-    self.areLightsAttached = YES;
+    [self createLightViewWith:colorsArray xCoord:self.defaultLightViewCordinateX yCoord:self.defaultLightViewCordinateY andWidth:self.defaultLightViewStateWidthAndHeight];
+    self.areLightViewsAttached = YES;
 }
 
-- (void)checkInColors:(LightColor)currentLightColors for:(DELLLightView *)currentLightUI {
+- (void)checkInColors:(LightColor)currentLightColors for:(DELLLightView *)currentLightView {
     NSMutableArray *array = [[NSMutableArray alloc] init];
     LightColor enumColor = 1;
-    for (int i = 0; i < 6; i++ ) {
+    for (int i = 0; i < self.countOfPossibleLightStates; i++ ) {
         enumColor<<=1;
         if (enumColor & currentLightColors) {
             [array addObject:[NSNumber numberWithUnsignedInteger:enumColor]];
         }
     }
-    [self switchColorArray:array On:YES forLight:currentLightUI];
+    [self switchColorArray:array On:YES forLight:currentLightView];
 }
 
-- (void)switchColorArray:(NSMutableArray *)array On:(BOOL)on forLight:(DELLLightView *)currentLightUI {
-    [self hideAllColorsForLightUI:currentLightUI andArray:array];
+- (void)switchColorArray:(NSMutableArray *)array On:(BOOL)on forLight:(DELLLightView *)currentLightView {
+    [self hideAllColorsForLightView:currentLightView andArray:array];
     
     BOOL blinking = NO;
     BOOL off = NO;
-    UIView *currentColorView  = nil;
-    for (int i = 0; i < [array count]; i++) {
+    UIView *currentColorView = nil;
+    for (int i = 0; i < array.count; i++) {
         LightColor enumColor = [[array objectAtIndex:i] unsignedIntegerValue];
         
         if (LightColorBlinking & enumColor) {
@@ -147,11 +148,11 @@ BOOL zombiesCreated = NO;
         }
         
         if (!currentColorView) {
-            currentColorView = [self findViewWithColor:enumColor inLight:currentLightUI];
+            currentColorView = [self findViewWithColor:enumColor inLight:currentLightView];
             currentColorView.alpha = 1;
             
             if (blinking) {
-                [self blinkView:currentColorView withDuration:self.blinkDuration];
+                [self blinkView:currentColorView withDuration:self.lightViewBlinkDuration];
             } else if(off) {
                 [self turnViewOff:currentColorView];
             }
@@ -161,7 +162,7 @@ BOOL zombiesCreated = NO;
 }
 
 - (void)blinkView:(UIView *)view withDuration:(double)duration {
-    view.alpha = self.lightStateAlpha;
+    view.alpha = self.lightViewStateAlpha;
     [UIView animateWithDuration:duration
                           delay:0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse | UIViewAnimationOptionAllowUserInteraction
@@ -171,7 +172,7 @@ BOOL zombiesCreated = NO;
                      completion:nil];
 }
 
-- (void)hideAllColorsForLightUI:(DELLLightView *)currentLightUI andArray:(NSMutableArray *)array {
+- (void)hideAllColorsForLightView:(DELLLightView *)currentLightUI andArray:(NSMutableArray *)array {
     //    for (UIView *image in currentLightUI.lightStatesImages) {
     //        [self turnViewOff:image];
     //    }
@@ -180,7 +181,7 @@ BOOL zombiesCreated = NO;
     LightColor currentColor = -1;
     for (UIView *image in currentLightUI.lightStatesImages) {
         colorFound = NO;
-        for (int i = 0; i < [array count]; i++) {
+        for (int i = 0; i < array.count; i++) {
             currentColor = [[array objectAtIndex:i] unsignedIntegerValue];
             if (image.backgroundColor == [self getUIColorFrom:currentColor]) {
                 colorFound = YES;
@@ -195,12 +196,12 @@ BOOL zombiesCreated = NO;
 
 - (void)turnViewOff:(UIView *)currentColorView {
     [currentColorView.layer removeAllAnimations];
-    currentColorView.alpha = self.lightStateAlpha;
+    currentColorView.alpha = self.lightViewStateAlpha;
 }
 
-- (UIView *)findViewWithColor:(LightColor)enumColor inLight:(DELLLightView *)currentLightUI {
+- (UIView *)findViewWithColor:(LightColor)enumColor inLight:(DELLLightView *)currentLightView {
     UIColor *colorFromEnum = [self getUIColorFrom:enumColor];
-    for (UIView *view in currentLightUI.lightStatesImages) {
+    for (UIView *view in currentLightView.lightStatesImages) {
         if ([view.backgroundColor isEqual:colorFromEnum]) {
             [view.layer removeAllAnimations];
             return view;
@@ -234,7 +235,6 @@ BOOL zombiesCreated = NO;
         [self.worldController stop];
         [self resetWorld];
     } else {
-        NSLog(@"Starting world button");
         captionForButton = NSLocalizedString(@"StartButtonTextReset", @"Reseting the World title");
         [sender setTitle:captionForButton forState:UIControlStateNormal];
         [self startWorld];
@@ -252,13 +252,13 @@ BOOL zombiesCreated = NO;
     [alert addAction:defaultAction];
     [self presentViewController:alert animated:YES completion:nil];
     
-    for (DELLLightView *light in self.lightsHub) {
+    for (DELLLightView *light in self.lightViewsArray) {
         [light removeFromSuperview];
     }
     self.worldController = nil;
-    self.areLightsAttached = NO;
-    self.lightsHub = [[NSMutableArray alloc] init];
-    zombiesCreated = NO;
+    self.areLightViewsAttached = NO;
+    self.lightViewsArray = [[NSMutableArray alloc] init];
+    __areZombiesCreated = NO;
 }
 
 - (BOOL)isWolrdReadyForAddingLight {
@@ -271,29 +271,29 @@ BOOL zombiesCreated = NO;
 }
 
 - (IBAction)addLightTypeA:(UIButton *)sender {
-    if ([self isWolrdReadyForAddingLight]) {
+    if (self.isWolrdReadyForAddingLight) {
         DELLight *newLight = [self.worldController addLightTypeA];
-        [self attachOneLight:newLight];
+        [self attachOneLightView:newLight];
     }
 }
 
 - (IBAction)addLightTypeB:(UIButton *)sender {
-    if ([self isWolrdReadyForAddingLight]) {
+    if (self.isWolrdReadyForAddingLight) {
         DELLight *newLight = [self.worldController addLightTypeB];
-        [self attachOneLight:newLight];
+        [self attachOneLightView:newLight];
     }
 }
 
 - (IBAction)addLightTypeC:(UIButton *)sender {
-    if ([self isWolrdReadyForAddingLight]) {
+    if (self.isWolrdReadyForAddingLight) {
         DELLight *newLight = [self.worldController addLightTypeC];
-        [self attachOneLight:newLight];
+        [self attachOneLightView:newLight];
     }
 }
 
 #pragma mark - Touches & Gestures
 
-- (void)attachGesturesTo:(DELLLightView *)lightView {
+- (void)attachGesturesToView:(DELLLightView *)lightView {
     UIRotationGestureRecognizer *rotationGesture =
     [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(handleRotation:)];
     rotationGesture.delegate = self;

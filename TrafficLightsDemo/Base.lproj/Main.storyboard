@@ -46,7 +46,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crossroad_done.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Zme-lK-cIO">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crossroad.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Zme-lK-cIO">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XtN-je-s8G">
@@ -102,6 +102,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="crossroad_done.jpg" width="1300" height="1300"/>
+        <image name="crossroad.jpg" width="1300" height="1300"/>
     </resources>
 </document>

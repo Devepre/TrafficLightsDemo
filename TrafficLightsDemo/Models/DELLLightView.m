@@ -2,8 +2,6 @@
 
 @implementation DELLLightView
 
-#pragma mark Object initializations
-
 - (instancetype)initWithFrame:(CGRect)frame andColors:(NSArray<UIColor *> *)colors {
     CGRect myFrame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.width * [colors count]);
     self = [super initWithFrame:myFrame];
