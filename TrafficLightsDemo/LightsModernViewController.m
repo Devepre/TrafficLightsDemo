@@ -126,7 +126,7 @@ BOOL __areZombiesCreated = NO;
     for (int i = 0; i < self.countOfPossibleLightStates; i++ ) {
         enumColor<<=1;
         if (enumColor & currentLightColors) {
-            [array addObject:[NSNumber numberWithUnsignedInteger:enumColor]];
+            [array addObject:@(enumColor)];    //equals to -> [array addObject:[NSNumber numberWithUnsignedInteger:enumColor]];
         }
     }
     [self switchColorArray:array On:YES forLight:currentLightView];
